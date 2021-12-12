@@ -32,10 +32,17 @@
                                 <p class="small text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="mb-3 col-lg-4">
+                        <div class="mb-3 col-lg-2">
                             <label for="fee">Fee</label>
                             <input type="text" name="fee" value="{{ old('fee') }}" id="fee" class="form-control rounded shadow-sm">
                             @error('fee')
+                                <p class="small text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="mb-3 col-lg-2">
+                            <label for="d_fee">Discount Fee</label>
+                            <input type="text" name="discount_fee" value="{{ old('discount_fee') }}" id="d_fee" class="form-control rounded shadow-sm">
+                            @error('discount_fee')
                                 <p class="small text-danger">{{ $message }}</p>
                             @enderror
                         </div>

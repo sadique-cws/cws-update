@@ -1,8 +1,9 @@
 @extends("layouts/publicBase")
 @section('content')
     <div class="container my-5" style="height: auto;min-height:200px">
-        <div class="card shadow-sm mb-3">
+        <div class="card mb-3 ">
             <div class="card-body">
+                <h2 class="lead mb-1">Pay Outstanding Fee</h2>
                 <form method="GET" action="{{ route('get.dues') }}">
                     <div class="input-group">
                         {{-- <input type="number" pattern="\d*" maxlength="10" placeholder="  enter phone no ...." class="form-control rounded" name="q" id="search"> --}}
@@ -10,11 +11,13 @@
                             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                             type = "number"
                             maxlength = "10"
-                            class="form-control border-1 border-light text-primary rounded"
+                            class="form-control   text-primary"
                             placeholder="  enter phone no ...." @if (isset($_GET['q'])) value="{{ $_GET['q'] }}"@endif
                         />
-                        <button class="btn btn-warning"><i class="bx bx-search"></i></button>
+                        <button class="btn btn-dark"><i class="bx bx-search"></i></button>
                     </div>
+                    <p class="small text-muted">Enter Registered Mobile No..</p>
+
                 </form>
             </div>
         </div>

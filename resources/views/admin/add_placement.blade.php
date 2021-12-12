@@ -23,23 +23,14 @@
                     <div class="row">
                         <div class="mb-3 col-lg-6">
                             <label for="mother_name">Company Name</label>
-                            <input type="text" name="company_name" value="{{ old('mother_name') }}" id="mother_name" class="form-control rounded shadow-sm">
+                            <input type="text" name="company_name" value="{{ old('company_name') }}" id="mother_name" class="form-control rounded shadow-sm">
                         </div>
                         <div class="mb-3 col-lg-6">
                             <label for="father_name">Job Role</label>
-                            <input type="text" name="job_role" value="{{ old('father_name') }}" id="father_name" class="form-control rounded shadow-sm">
+                            <input type="text" name="job_role" value="{{ old('job_role') }}" id="father_name" class="form-control rounded shadow-sm">
                         </div>
                     </div>
-                   {{-- <div class="row">
-                        <div class="mb-3 col-lg-6">
-                            <label for="contact">Contact</label>
-                            <input type="number" name="contact" value="{{ old('contact') }}" id="contact" class="form-control rounded shadow-sm">
-                        </div>
-                        <div class="mb-3 col-lg-6">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" value="{{ old('email') }}" id="email" class="form-control rounded shadow-sm">
-                        </div>
-                   </div> --}}
+                  
                    <div class="row mb-3">
                         <div class="col">
                             <label for="image">Image</label>
@@ -47,12 +38,21 @@
                         </div>
                         <div class="col">
                             <label for="dob">Joining Date</label>
-                            <input type="date"  name="joining_date" value="{{ old('dob') }}"  class="form-control shadow-sm" id="dob">
+                            <input type="date"  name="joining_date" value="{{ old('joining_date') }}"  class="form-control shadow-sm">
+                        </div>
+                        <div class="col">
+                            <label for="type">Job Type</label>
+                            <select name="job_type" value="{{ old('job_type') }}"  class="form-control shadow-sm" id="type">
+                                    <option>Part Time</option>
+                                    <option>Full Time</option>
+                                    <option>Remote</option>
+                                    <option>Intership</option>
+                            </select>
                         </div>
                    </div>
                    <div class="mb-3">
                        <label for="address">Description</label>
-                       <textarea name="address" id="description" cols="30" rows="6" class="form-control"></textarea>
+                       <textarea name="description" id="description" cols="30" rows="6" class="form-control">{{old('description')}}</textarea>
                    </div>
                    <div class="mb-3">
                        <button class="btn btn-dark w-100">Add</button>

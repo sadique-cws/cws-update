@@ -45,8 +45,7 @@
                                 </td>
                                 <td>
                                     <div class="d-flex order-actions">
-                                        <a href="{{ route('admin.placements.delete',['placement_id'=>$placement->id]) }}" class="text-danger bg-light-danger border-0"><i class="bx bxs-trash"></i></a>
-                                        <a href="{{ route('admin.edit.placement.view',['placement_id'=>$placement->id]) }}" class="ms-4 text-primary bg-light-primary border-0"><i class="bx bxs-edit"></i></a>
+                                        <a href="{{ route('admin.placements.delete',['id'=>$placement->id]) }}" class="text-danger bg-light-danger border-0"><i class="bx bxs-trash"></i></a>
                                     </div>
                                 </td>
 

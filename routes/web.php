@@ -78,7 +78,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/image_upload', [AdminController::class,"upload"])->name('upload');
 
     // Route::resource('course', CourseController::class);
-
+    
     Route::get('/',[AdminController::class,'index'] )->name('admin.dashboard');
 
     Route::get('/courses',[CourseController::class,'courses'])->name('admin.courses');
@@ -90,13 +90,14 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/edit-course/{course_id}',[CourseController::class,'editCouse'])->name('admin.edit.course.view');
     Route::post('/edit-course',[CourseController::class,'edit'])->name('admin.edit.course');
 
-    Route::get('/new-addmission',[AdminController::class,'new_addmission'])->name('new.addmissions');
+    Route::get('/new-admission',[AdminController::class,'new_addmission'])->name('new.addmissions');
+    Route::get('/student/approve/{id}',[AdminController::class,'approve'])->name('admin.student.approve');
 
     Route::get('/students',[AdminController::class,'students'])->name('students');
     Route::get('/add-student', function () {
         return view('admin.add_student');
     })->name('add.student.view');
-    Route::post('/add-student',[AdminController::class,'addStudent'])->name('add.student');
+    // Route::post('/add-student',[AdminController::class,'addStudent'])->name('add.student');
 
     Route::get('/dues',[AdminController::class,'dues_payments'])->name('dues.payments');
     Route::get('/paid',[AdminController::class,'paid_payments'])->name('paid.payments');
@@ -114,6 +115,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/placements',[PlacementController::class,'placements'])->name('placements');
     Route::get('/add-placements',[PlacementController::class,'add'])->name('add.placement');
     Route::post('/add-placements',[PlacementController::class,'store'])->name('store.placement');
+    Route::delete('/placements/{id}',[PlacementController::class,'destroy'])->name('admin.placements.delete');
 });
 
 

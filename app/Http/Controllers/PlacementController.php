@@ -12,6 +12,10 @@ class PlacementController extends Controller
         return view('admin.placements',$data);
     }
 
+    public function destroy($id){
+        echo "";
+    }
+
     public function add(){
         return view('admin.add_placement');
     }
@@ -26,11 +30,12 @@ class PlacementController extends Controller
 
         $placement = new Placement();
         $placement->name = $request->name;
-        $placement->role = $request->role;
+        $placement->role = $request->job_role;
         $placement->company_name = $request->company_name;
         $placement->joining_date = $request->joining_date;
         $placement->job_type = $request->job_type;
         $placement->description = $request->description;
+        $placement->image = $image;
         $placement->save();
 
         toast('Placement has been added!','success');

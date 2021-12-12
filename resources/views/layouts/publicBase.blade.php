@@ -86,10 +86,9 @@
                     <li class="nav-item"><a href="{{ route('homepage') }}" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="{{ route('home.placements') }}" class="nav-link">Placements</a></li>
                     <li class="nav-item"><a href="{{ route('courses') }}" class="nav-link">Courses</a></li>
-                    <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">WorkShop <sup> <span class="custom-nav-badge badge bg-danger badge-pill">New</span></sup></a></li>
-                    <li class="nav-item"><a href="{{ route('dues') }}" class="nav-link">Pay dues</a></li>
-                    <li class="nav-item"><a href="{{ route('apply') }}" class="btn btn-success">Apply for
+                    {{-- <li class="nav-item"><a href="" class="nav-link">WorkShop <sup> <span class="custom-nav-badge badge bg-danger badge-pill">New</span></sup></a></li> --}}
+                    <li class="nav-item"><a href="{{ route('dues') }}" class="nav-link">Online Payment</a></li>
+                    <li class="nav-item"><a href="{{ route('apply') }}" class="btn btn-warning">Apply for
                             Admission</a></li>
                 </ul>
             </div>
@@ -108,8 +107,7 @@
                         <div class="footer-nav-wrap text-white">
                             {{-- <img src="img/logo-white-1x.png" alt="footer logo" width="120" class="img-fluid mb-3"> --}}
                             <h4 class="h3 text-white">CodeWithSadiQ</h4>
-                            <p>Holisticly empower premium architectures without value-added ideas. Seamlessly evolve
-                                cross-platform experiences.</p>
+                            <p></p>
 
                             <div class="social-list-wrap">
                                 <ul class="social-list list-inline list-unstyled">
@@ -125,28 +123,29 @@
                         <div class="row">
                             <div class="col-sm-6 col-md-4 col-lg-4 mb-4 mb-sm-4 mb-md-0 mb-lg-0">
                                 <div class="footer-nav-wrap text-white">
-                                    <h5 class="mb-3 text-white">Resources</h5>
+                                    <h5 class="mb-3 text-white">Quick Links</h5>
                                     <ul class="list-unstyled">
-                                        <li class="mb-2"><a href="#">Help</a></li>
-                                        <li class="mb-2"><a href="#">Events</a></li>
-                                        <li class="mb-2"><a href="#">Live Support</a></li>
-                                        <li class="mb-2"><a href="#">Open Sources</a></li>
-                                        <li class="mb-2"><a href="#">Documentation</a></li>
+                                        <li class="mb-2"><a href="#">Home</a></li>
+                                        <li class="mb-2"><a href="#">About</a></li>
+                                        <li class="mb-2"><a href="#">Projects</a></li>
+                                        <li class="mb-2"><a href="#">Workshop</a></li>
+                                        <li class="mb-2"><a href="#">Hire us</a></li>
+                                      
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4 col-lg-4 mb-4 mb-sm-4 mb-md-0 mb-lg-0">
+                            <div class="col-sm-6 col-md-4 col-lg-3 mb-4 mb-sm-4 mb-md-0 mb-lg-0">
                                 <div class="footer-nav-wrap text-white">
-                                    <h5 class="mb-3 text-white">Company</h5>
+                                    <h5 class="mb-3 text-white">About Class</h5>
                                     <ul class="list-unstyled support-list">
                                         <li class="mb-2">
-                                            <a href="#">About Us</a>
+                                            <a href="#">About Instructor</a>
                                         </li>
                                         <li class="mb-2">
-                                            <a href="#">Careers</a>
+                                            <a href="#">MileStones </a>
                                         </li>
                                         <li class="mb-2">
-                                            <a href="#">Customers</a>
+                                            <a href="#">Vision</a>
                                         </li>
                                         <li class="mb-2">
                                             <a href="#">Community</a>
@@ -157,17 +156,17 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4 col-lg-4">
+                            <div class="col-sm-6 col-md-4 col-lg-5">
                                 <div class="footer-nav-wrap text-white">
                                     <h5 class="mb-3 text-white">Location</h5>
                                     <ul class="list-unstyled support-list">
                                         <li class="mb-2 d-flex align-items-center"><span class="ti-location-pin mr-2"></span>
-                                            121 King Melbourne
-                                            <br>Australia 3000
+                                            Ramavtar Market, Near Dog Hospital,
+                                            <br>Thana Chowk, Gandhinagar, Madhubani, Purnea - 854301
                                         </li>
-                                        <li class="mb-2 d-flex align-items-center"><span class="ti-mobile mr-2"></span> <a href="tel:+61283766284"> +61 2 8376 6284</a></li>
-                                        <li class="mb-2 d-flex align-items-center"><span class="ti-email mr-2"></span><a href="mailto:mail@example.com"> mail@example.com</a></li>
-                                        <li class="mb-2 d-flex align-items-center"><span class="ti-world mr-2"></span><a href="#"> www.yourdomain.com</a></li>
+                                        <li class="mb-2 d-flex align-items-center"><span class="ti-mobile mr-2"></span> <a href="tel:+61283766284"> +91 95 4680 5580</a></li>
+                                        <li class="mb-2 d-flex align-items-center"><span class="ti-email mr-2"></span><a href="mailto:mail@example.com"> cwspurnea@gmail.com</a></li>
+                                        <li class="mb-2 d-flex align-items-center"><span class="ti-world mr-2"></span><a href="#"> www.codewithsadiq.com</a></li>
                                     </ul>
                                 </div>
                             </div>

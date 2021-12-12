@@ -76,7 +76,7 @@
 					<a href="{{ route('new.addmissions') }}">
 						<div class="parent-icon"><i class='bx bx-user-plus'></i>
 						</div>
-						<div class="menu-title">New Addmission <sup><span class="p-1 rounded text-success bg-light-success ">{{ new_addmission()->count() }}</span></sup></div>
+						<div class="menu-title">New Admission <sup><span class="p-1 rounded text-success bg-light-success ">{{ new_addmission()->count() }}</span></sup></div>
 					</a>
 				</li>
                 <li class="@yield('students')">

@@ -32,6 +32,7 @@ class CourseController extends Controller
         $course->description = $request->description;
         $course->duration = $request->duration;
         $course->fee = $request->fee;
+        $course->discount_fee = $request->input('discount_fee',0);
         $course->image = $image;
         // $course->save();
 

@@ -122,12 +122,9 @@
                                    </tr>
                                </thead>
                                <tbody>
-                                   @php
-                                       $sr = 0;
-                                   @endphp
                                     @foreach (payments('dues') as $dues)
                                     <tr>
-                                        <td>#{{ $sr +=1 }}</td>
+                                        <td>#{{ $dues->id }}</td>
                                         <td>{{ $dues->student->name }}</td>
                                         <td class="">
                                         @php
@@ -141,8 +138,7 @@
                                                 <form action="{{ route('set.payment.paid') }}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="student_id" value="{{ $dues->student_id }}">
-                                                    <input type="hidden" name="payment_id" value="{{ $dues->payment_id }}">
-
+                                                    <input type="hidden" name="payment_id" value="{{ $dues->id }}">
                                                     <button class="btn btn-sm bg-light-success text-success">₹ Paid</button>
                                                 </form>
                                                 <button class="btn btn-sm bg-light-primary ms-2 text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $due->id }}"><i class="bx bx-edit"></i></button>

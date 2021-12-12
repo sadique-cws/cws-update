@@ -14,7 +14,7 @@
                 <h5>Add Student</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('add.student') }}" enctype="multipart/form-data" method="post">
+                <form action="{{ route('apply.addmission') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <input type="hidden" name="flag" value="1">
                     <div class="mb-3">

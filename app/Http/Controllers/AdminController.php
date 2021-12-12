@@ -55,9 +55,15 @@ class AdminController extends Controller
         return view('admin.new_addmission',$data);
     }
 
+    public function approve($id){
+            $student = User::find($id);
+            $student->status = 1;
+            $student->save();
+            return redirect()->route('students');
+    }
     public function students(){
 
-        $data['students'] = User::where('user_type','student')->get();
+        $data['students'] = User::where('user_type','student')->where('status',true)->get();
         return view('admin.students',$data);
     }
 
@@ -132,9 +138,9 @@ class AdminController extends Controller
         $user = User::where('id',$request->student_id)->first();
         $phone = $user->contact;
 
-        $payment = Payments::where([['id'=>$request->payment_id],['student_id',$request->student_id]])->update(['status'=>'paid','payment_date'=>Carbon::now(),'payment_mode'=>$request->payment_mode]);
+        $payment = Payments::where([['id',$request->payment_id],['student_id',$request->student_id]])->update(['status'=>'paid','payment_date'=>Carbon::now(),'payment_mode'=>'cash']);
 
-        $get_payment = Payments::where([['id'=>$request->payment_id],['student_id',$request->student_id]])->first();
+        $get_payment = Payments::where([['id',$request->payment_id],['student_id',$request->student_id]])->first();
         $date = new DateTime($get_payment->dues_month);
         $due_month = $date->format('M');
 
