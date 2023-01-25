@@ -640,4 +640,4 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#w-chart8"), options);
 	chart.render();
-});
+});;

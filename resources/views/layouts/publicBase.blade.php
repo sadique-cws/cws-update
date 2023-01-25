@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>CodeWithSadiQ</title>
+    <title>{{config('app.name')}}</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!--<link rel="stylesheet" href="{{ asset('css/app.css') }}">-->
 	<link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
     <!-- Styles -->
@@ -24,7 +23,7 @@
             width: 100%;
             display: block;
             background: url('https://appco.themetags.com/img/footer-bg.png')no-repeat center center / cover;
-            height: 105vh;
+            height: 80vh;
             margin-top: -100px;
 
         }
@@ -63,16 +62,16 @@
         }
     </style>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
 </head>
+    @if(Route::current()->getName() != 'homepage')
+    @endif
 
 <body>
     @include('sweetalert::alert')
 
-    <div class="navbar navbar-expand-lg navbar-dark py-3 shadow-none bg-transparent"
-    @if(Route::current()->getName() != 'homepage')
+    <div class="navbar navbar-expand-lg navbar-dark py-3 shadow-none bg-transparent mb-4 mb-md-0"
         style="background-image: linear-gradient(to right, rgba(32, 40, 119, 1), rgba(55, 46, 149, 1), rgba(83, 49, 177, 1), rgba(114, 48, 205, 1), rgba(150, 41, 230, 1)) !important"
-    @endif
     >
         <div class="container px-5">
             <a href="{{ route('homepage') }}" class="navbar-brand">Code with SadiQ</a>
@@ -84,7 +83,6 @@
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a href="{{ route('homepage') }}" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="{{ route('home.placements') }}" class="nav-link">Placements</a></li>
                     <li class="nav-item"><a href="{{ route('courses') }}" class="nav-link">Courses</a></li>
                     {{-- <li class="nav-item"><a href="" class="nav-link">WorkShop <sup> <span class="custom-nav-badge badge bg-danger badge-pill">New</span></sup></a></li> --}}
                     <li class="nav-item"><a href="{{ route('dues') }}" class="nav-link">Online Payment</a></li>
@@ -100,7 +98,7 @@
     <footer class="footer-section mt-5">
 
         <!--footer top start-->
-        <div class="footer-top pt-150 background-img-2 pt-5 " style="background: url('https://appco.themetags.com/img/footer-bg.png')no-repeat center top / cover; border-radius:20px 20px 0 0">
+        <div class="footer-top pt-150 pt-5 bg-primary">
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-md-12 col-lg-4 mb-4 mb-md-4 mb-sm-4 mb-lg-0">
@@ -180,7 +178,7 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-12">
                             <div class="copyright-wrap small-text w-100">
-                                <p class="mb-0 text-white text-center">© CodeWithSadiQ, All rights reserved</p>
+                                <p class="mb-0 text-white text-center">© {{config('app.name')}}, All rights reserved</p>
                             </div>
                         </div>
                     </div>
@@ -190,7 +188,6 @@
         </div>
         <!--footer top end-->
     </footer>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 

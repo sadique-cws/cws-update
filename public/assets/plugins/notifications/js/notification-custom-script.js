@@ -283,4 +283,4 @@ function anim5_noti() {
 		width: 600,
 		msg: 'Lorem ipsum dolor sit amet hears farmer indemnity inherent.'
 	});
-}
+};

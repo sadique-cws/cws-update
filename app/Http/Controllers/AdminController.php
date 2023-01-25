@@ -17,7 +17,8 @@ class AdminController extends Controller
 {
     public function index(){
         generate_payment();
-        return view('admin.index');
+        $data['total_paid'] = Payments::where('status',"paid")->WhereMonth("created_at",Carbon::now()->month)->get();
+        return view('admin.index',$data);
     }
 
     public function upload(Request $request)
@@ -61,12 +62,73 @@ class AdminController extends Controller
             $student->save();
             return redirect()->route('students');
     }
+    
+     public function disabled($id){
+            $student = User::find($id);
+            $roll = $student->id;
+           
+            $student->status = 3;
+            $student->save();
+            $payments  = Payments::where([['student_id',$id],['status','dues']])->get();
+            foreach($payments as $pay){
+                echo $pay;
+                $p = Payments::find($pay->id);
+                $p->delete();
+            }
+            return redirect()->route('students');
+    }
     public function students(){
 
-        $data['students'] = User::where('user_type','student')->where('status',true)->get();
+        $data['students'] = User::where('user_type','student')->get();
         return view('admin.students',$data);
     }
+    
+    public function studentApi(){
 
+        $data = User::select("name","email",'id','dob','gender')->where('user_type','student')->where('status',false)->get();
+        return $data;
+    }
+    
+       public function RemoveStudent($id){
+
+        $student = User::where('user_type','student')->where('id',$id)->first();
+        $student->delete();
+        return redirect()->route("students");
+    }
+    public function addStudentApi(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'father_name'=>'required',
+            'mother_name'=>'required',
+            'contact'=>'required|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'gender'=>'required',
+            'dob'=>'required',
+        ]);
+
+
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $password =  substr(str_shuffle($chars), 0, 8);
+
+        $student = new User();
+        $student->name = $request->name;
+        $student->mother_name = $request->mother_name;
+        $student->father_name = $request->father_name;
+        $student->contact = $request->contact;
+        $student->email = $request->email;
+        $student->gender = $request->gender;
+        $student->dob = $request->dob;
+        $student->address = $request->address;
+        $student->education = $request->education;
+        $student->password = Hash::make($password);
+
+        if($request->has('flag') && $request->flag == 1){
+            $student->status = true;
+        }
+        $student->save();
+        
+        return ['msg' => "student record inserted successfullly"];
+    }
 
     public function addStudent(Request $request){
         $request->validate([

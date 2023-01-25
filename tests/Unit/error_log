@@ -1,0 +1,8 @@
+[02-Jan-2023 17:18:44 UTC] PHP Fatal error:  Uncaught Error: Class "PHPUnit\Framework\TestCase" not found in /home/codewith/public_html/tests/Unit/ExampleTest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/codewith/public_html/tests/Unit/ExampleTest.php on line 7
+[08-Jan-2023 17:25:34 UTC] PHP Fatal error:  Uncaught Error: Class "PHPUnit\Framework\TestCase" not found in /home/codewith/public_html/tests/Unit/ExampleTest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/codewith/public_html/tests/Unit/ExampleTest.php on line 7

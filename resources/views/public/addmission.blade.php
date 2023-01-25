@@ -1,4 +1,4 @@
-@extends("layouts/public")
+@extends("layouts/publicBase")
 @section('content')
     <div class="container my-4">
         <div class="card border-0 shadow-sm">

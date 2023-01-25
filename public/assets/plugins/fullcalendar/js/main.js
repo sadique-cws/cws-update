@@ -14418,3 +14418,4 @@ var FullCalendar = (function (exports) {
     return exports;
 
 }({}));
+;

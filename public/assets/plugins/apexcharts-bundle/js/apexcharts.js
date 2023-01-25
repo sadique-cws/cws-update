@@ -29603,3 +29603,4 @@
   return ApexCharts$1;
 
 })));
+;

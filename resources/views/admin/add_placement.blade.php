@@ -32,21 +32,22 @@
                     </div>
                   
                    <div class="row mb-3">
-                        <div class="col">
+                        <div class="col-lg-4">
                             <label for="image">Image</label>
                             <input type="file" name="image" value="{{ old('image') }}" class="form-control shadow-sm" id="image">
                         </div>
-                        <div class="col">
+                        <div class="col-lg-4">
                             <label for="dob">Joining Date</label>
                             <input type="date"  name="joining_date" value="{{ old('joining_date') }}"  class="form-control shadow-sm">
                         </div>
-                        <div class="col">
+                        <div class="col-lg-4">
                             <label for="type">Job Type</label>
                             <select name="job_type" value="{{ old('job_type') }}"  class="form-control shadow-sm" id="type">
                                     <option>Part Time</option>
                                     <option>Full Time</option>
                                     <option>Remote</option>
                                     <option>Intership</option>
+                                    <option>Founder</option>
                             </select>
                         </div>
                    </div>

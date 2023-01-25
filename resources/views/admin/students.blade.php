@@ -14,12 +14,12 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive p-2">
-                    <table id="example2" class="table p-2 table-borderless table-hover">
+                    <table id="example2" class="table p-2 table-borderless table-hover table-sm small">
                         <thead>
                             <tr>
+                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Father name</th>
-                                <th>Email</th>
                                 <th>Age</th>
                                 <th>Start date</th>
                                 <th>Phone no</th>
@@ -28,10 +28,10 @@
                         </thead>
                         <tbody>
                             @foreach ($students as $student)
-                            <tr>
+                            <tr class='@if($student->status==3) bg-warning @endif'>                                
+                            <td>{{ $student->id }}</td>
                                 <td>{{ $student->name }}</td>
                                 <td>{{ $student->father_name }}</td>
-                                <td>{{ $student->email }}</td>
                                 <td>{{ $student->gender }}</td>
                                 @php
                                     $date = strtotime($student->created_at);
@@ -41,8 +41,9 @@
                                 <td>{{ $student->contact }}</td>
                                 <td>
                                     <div class="d-flex order-actions">
-                                        <a href="javascript:;" class="text-danger bg-light-danger border-0"><i class="bx bxs-trash"></i></a>
+                                        <a href="{{ route('admin.students.remove',['id'=>$student->id])}}" class="text-danger bg-light-danger border-0"><i class="bx bxs-trash"></i></a>
                                         <a href="javascript:;" class="ms-4 text-primary bg-light-primary border-0"><i class="bx bxs-edit"></i></a>
+                                        <a href="{{ route('admin.student.disabled',['id'=>$student->id])}}" class="ms-4 text-info bg-light-primary border-0"><i class="bx bxs-hide"></i></a>
                                     </div>
                                 </td>
 

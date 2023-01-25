@@ -10,20 +10,22 @@ use App\Models\Paytm;
 use App\Models\User;
 // use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\Route;
+use App\Models\Placement;
+use App\Models\Course;
 
 Route::get('/v2', function () {
     return view('layouts.publicBase');
 });
 
-Route::get("/",[HomeController::class,"home"])->name('homepage');
+// Route::get("/",[HomeController::class,"home"])->name('homepage');
 
 Route::get('/contact-us', function () {
     return view('public.contact');
 })->name('contact');
 
-Route::get("/courses",[HomeController::class,"courses"])->name('courses');
+// Route::get("/courses",[HomeController::class,"courses"])->name('courses');
 
-Route::get("/apply",[HomeController::class,"apply"])->name('apply');
+// Route::get("/apply",[HomeController::class,"apply"])->name('apply');
 
 Route::get("/response",[HomeController::class,"response"])->name('response');
 
@@ -45,15 +47,14 @@ Route::get('/get-dues', function () {
         return redirect()->back();
     }
     $data['dues'] = Payments::where('student_id',$user[0]->id)->get();
-    return view('public.pay_dues',$data);
+    return view('public.v2.online-payment',$data);
+    // return view('public.pay_dues',$data);
 })->name('get.dues');
 
 Route::get('/check/{pay_id}', function ($payment_id) {
     $data['data'] = Payments::where('id',$payment_id)->first();
     return view('public.receipt',$data);
 });
-
-Route::get('/placements',[HomeController::class,'placements'])->name('home.placements');
 
 Route::get('generate-pdf/{payment_id}', function($payment_id){
 
@@ -74,9 +75,41 @@ Route::get('/contact', function () {
 Route::post('/paytm',[PaytmController::class,'pay'])->name('paytm.payment');
 Route::post('/paytm-callback',[PaytmController::class,'paytmcallback'])->name('paytm.callback');
 
+Route::get('/add-placements',[PlacementController::class,'add'])->name('add.placement');
+Route::post('/add-placements',[PlacementController::class,'store'])->name('store.placement');
+
+// v2 design
+Route::get('/', function () {
+    $data['placements'] = Placement::where('status',true)->get();
+    $data['courses'] = Course::where('status',true)->get();
+    return view('public.v2.index',$data);
+})->name('homepage');
+
+Route::get('/apply', function () {
+    return view('public.v2.apply');
+})->name('apply');
+    
+Route::get('/payment', function () {
+    return view('public.v2.online-payment');
+})->name('payment');
+
+Route::get('/courses', function () {
+    $data['courses'] = Course::where('status',true)->get();
+    return view('public.v2.course',$data);
+})->name('courses');
+
+
+Route::prefix('v2')->group(function () {
+
+    Route::get('/gallery', function () {
+        return view('public.v2.gallery');
+    })->name('gallery');
+
+});
+    
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/image_upload', [AdminController::class,"upload"])->name('upload');
-
+    
     // Route::resource('course', CourseController::class);
     
     Route::get('/',[AdminController::class,'index'] )->name('admin.dashboard');
@@ -92,11 +125,14 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/new-admission',[AdminController::class,'new_addmission'])->name('new.addmissions');
     Route::get('/student/approve/{id}',[AdminController::class,'approve'])->name('admin.student.approve');
+    Route::get("/student/disabled/{id}",[AdminController::class, "disabled"])->name('admin.student.disabled');
+    Route::get('/students/{id}/remove',[AdminController::class,'removeStudent'])->name('admin.students.remove');
 
     Route::get('/students',[AdminController::class,'students'])->name('students');
     Route::get('/add-student', function () {
         return view('admin.add_student');
     })->name('add.student.view');
+    
     // Route::post('/add-student',[AdminController::class,'addStudent'])->name('add.student');
 
     Route::get('/dues',[AdminController::class,'dues_payments'])->name('dues.payments');
@@ -113,11 +149,20 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     // });
 
     Route::get('/placements',[PlacementController::class,'placements'])->name('placements');
-    Route::get('/add-placements',[PlacementController::class,'add'])->name('add.placement');
-    Route::post('/add-placements',[PlacementController::class,'store'])->name('store.placement');
     Route::delete('/placements/{id}',[PlacementController::class,'destroy'])->name('admin.placements.delete');
 });
 
+Route::get('/route',function(){
+    \Artisan::call('route:clear');
+});
+
+Route::get('/cache',function(){
+    \Artisan::call('cache:clear');
+});
+
+Route::get('/config',function(){
+    \Artisan::call('config:clear');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

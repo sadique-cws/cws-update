@@ -1,0 +1,12 @@
+[21-Dec-2022 01:18:22 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\View\Component" not found in /home/codewith/public_html/app/View/Components/GuestLayout.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/codewith/public_html/app/View/Components/GuestLayout.php on line 7
+[24-Dec-2022 00:06:32 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\View\Component" not found in /home/codewith/public_html/app/View/Components/AppLayout.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/codewith/public_html/app/View/Components/AppLayout.php on line 7
+[01-Jan-2023 07:30:07 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\View\Component" not found in /home/codewith/public_html/app/View/Components/Students.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/codewith/public_html/app/View/Components/Students.php on line 7

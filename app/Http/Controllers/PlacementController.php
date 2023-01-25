@@ -24,18 +24,19 @@ class PlacementController extends Controller
             'name'=>'required'
         ]);
 
-
-        $image = time(). "." . $request->image->extension();
-        $request->image->move(public_path("images/placement"),$image);
-
         $placement = new Placement();
+
+        if($request->hasFile('image')) {
+            $image = time(). "." . $request->image->extension();
+            $request->image->move(public_path("images/placement"),$image);
+            $placement->image = $image;
+        }
         $placement->name = $request->name;
         $placement->role = $request->job_role;
         $placement->company_name = $request->company_name;
         $placement->joining_date = $request->joining_date;
         $placement->job_type = $request->job_type;
         $placement->description = $request->description;
-        $placement->image = $image;
         $placement->save();
 
         toast('Placement has been added!','success');

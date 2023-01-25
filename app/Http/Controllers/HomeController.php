@@ -13,7 +13,7 @@ class HomeController extends Controller
 
     public function home(){
         $data['courses'] = Course::where('status',true)->get();
-        $data['placements'] = Placement::where('status',true)->get();
+        $data['placements'] = Placement::where('status',true)->orderby('id','desc')->get();
         return view("public/home",$data);
     }
     public function courses(){

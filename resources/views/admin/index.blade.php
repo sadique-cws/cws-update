@@ -42,49 +42,23 @@
                         <div class="" id="chart1"></div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card radius-10 overflow-hidden bg-info">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <p class="mb-0 text-dark">Total Paid</p>
-                                    <h5 class="mb-0 text-dark">₹
-                                        @php
-                                            $paid= 0;
-                                            foreach(payments('paid') as $due){
-                                                $paid += $due->amount;
-                                            }
-
-                                            echo $paid;
-                                        @endphp
-                                    </h5>
-                                </div>
-                                <div class="ms-auto text-dark">	<i class='bx bx-group font-30'></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="" id="chart2"></div>
-                    </div>
-                </div>
-                {{-- <div class="col">
+                
+              <div class="col">
                     <div class="card radius-10 overflow-hidden bg-warning">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
                                     @php
                                         $date = new DateTime();
-                                        $due_month = payments('dues')->groupBy(function($date) { Carbon\Carbon::parse($date->dues_month)->format('m'); // grouping by months
-                                                        });
-
+                                        $due_month = $total_paid;
+                                        $total = 0;
                                         foreach ($due_month as $d) {
-                                            foreach ($d as $dd) {
-                                                echo $dd->id;
-                                            }
+                                              $total+=$d->amount;
                                         }
+                                        echo $total;
 
                                     @endphp
-                                    <p class="mb-0 text-white">{{ $date->format('M'); }} Dues</p>
-                                    <h5 class="mb-0 text-white">869</h5>
+                                    <p class="mb-0 text-white">{{ $date->format('M'); }} Paid</p>
                                 </div>
                                 <div class="ms-auto text-white">	<i class='bx bx-chat font-30'></i>
                                 </div>
@@ -92,7 +66,7 @@
                         </div>
                         <div class="" id="chart3"></div>
                     </div>
-                </div> --}}
+                </div> 
           </div><!--end row-->
 
           {{-- recent payments --}}
@@ -115,6 +89,7 @@
                                    <tr>
                                        <th>ID</th>
                                        <th>Student Name</th>
+                                       <th>Father</th>
                                        <th>Due Month</th>
                                        <th>Status</th>
                                        <th>Due Amount</th>
@@ -123,9 +98,10 @@
                                </thead>
                                <tbody>
                                     @foreach (payments('dues') as $dues)
-                                    <tr>
+                                    <tr class="@if($dues->student->status==3) bg-warning @endif">
                                         <td>#{{ $dues->id }}</td>
                                         <td>{{ $dues->student->name }}</td>
+                                        <td>{{ $dues->student->father_name }}</td>
                                         <td class="">
                                         @php
                                             $date = new DateTime($dues->dues_month);
@@ -141,19 +117,13 @@
                                                     <input type="hidden" name="payment_id" value="{{ $dues->id }}">
                                                     <button class="btn btn-sm bg-light-success text-success">₹ Paid</button>
                                                 </form>
-                                                <button class="btn btn-sm bg-light-primary ms-2 text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $due->id }}"><i class="bx bx-edit"></i></button>
-                                                <form action="{{ route('send.sms') }}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" name="student_id" value="{{ $dues->student_id }}">
-                                                    <input type="hidden" name="dues_month" value="{{ $date->format('M') }}">
-                                                    <input type="hidden" name="dues_amount" value="{{ $dues->amount }}">
-                                                    <button class="btn btn-sm bg-light-warning ms-2 text-warning"><i class="bx bx-envelope"></i></button>
-                                                </form>
+                                                <button class="btn btn-sm bg-light-primary ms-2 text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $dues->id }}"><i class="bx bx-edit"></i></button>
+                                               
                                             </div>
                                         </td>
 
                                     </tr>
-                                    <div class="modal fade" id="exampleModal{{ $due->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal{{ $dues->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -163,7 +133,7 @@
                                                 <div class="modal-body">
                                                     <form action="{{ route('update.dues.amount') }}" method="post">
                                                         @csrf
-                                                        <input type="hidden" name="payment_id" value="{{ $dues->id }}">
+                                                        <input type="text" name="payment_id" value="{{ $dues->id }}">
                                                         <div class="mb-3">
                                                             <label for="amount">Amount</label>
                                                             <input type="text" value="{{ $dues->amount }}" name="amount" class="form-control shadow-sm" id="amount">

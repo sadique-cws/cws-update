@@ -12,10 +12,11 @@
             <div class="row">
                 <div class="col-9">
                     <h1 class="display-6">{{ $course->title }}</h1>
-                    <p class="">{{ $course->description }}.</p>
+                    <p class="small text-justify">{{ $course->description }}.</p>
                     <div class="d-flex mt-4">
-                        <p class="h6 ">₹ {{ $course->fee }}</p>
+                        <p class="h6 "><strong>Course Fee: </strong> ₹ {{ $course->fee }}</p>
                         <p class="h6 ms-3"><strong>Duration : </strong>{{ $course->duration }} months</p>
+                        <p class="h6 ms-3"><strong>Instructor : </strong>Syed Sadique Hussain</p>
                     </div>
                 </div>
                 <div class="col-3">

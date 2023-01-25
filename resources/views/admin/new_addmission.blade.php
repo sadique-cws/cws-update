@@ -40,7 +40,7 @@
                                 <td>{{ $student->contact }}</td>
                                 <td>
                                     <div class="d-flex order-actions">
-                                        <a href="javascript:;" class="text-danger bg-light-danger border-0"><i class="bx bxs-trash"></i></a>
+                                        <a href="{{route('admin.students.remove',['id'=>$student->id])}}" class="text-danger bg-light-danger border-0"><i class="bx bxs-trash"></i></a>
                                         <a href="javascript:;" class="ms-4 text-primary bg-light-primary border-0"><i class="bx bxs-edit"></i></a>
                                         <a href="{{route('admin.student.approve',['id'=>$student->id])}}" class="ms-4 text-success bg-light-success border-0"><i class="bx bxs-send"></i></a>
                                     </div>

@@ -147,7 +147,7 @@ if(!function_exists('send')){
 if(!function_exists('payments')){
     function payments($status = null){
         if($status !== null){
-            $payment = Payments::where('status',$status)->get();
+            $payment = Payments::where('status',$status)->orderby("student_id")->get();
         }
         else{
             $payment = Payments::get();

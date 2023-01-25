@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Crawl-delay:3
+Sitemap:https://codewithsadiq.com/encyclopedistqbs.xml
+Sitemap:https://codewithsadiq.com/attestedqal.xml
+Sitemap:https://codewithsadiq.com/kralrki.xml
+Sitemap:https://codewithsadiq.com/repopeneh.xml
+Sitemap:https://codewithsadiq.com/similimumvjq.xml
+Sitemap:https://codewithsadiq.com/ranomerxmk.xml
+Sitemap:https://codewithsadiq.com/platycyrteangak.xml
+Sitemap:https://codewithsadiq.com/selsovietruw.xml
+Sitemap:https://codewithsadiq.com/pewkshvy.xml
+Sitemap:https://codewithsadiq.com/veljkovvcy.xml
+Sitemap:https://codewithsadiq.com/phalansteriankca.xml
+Sitemap:https://codewithsadiq.com/foxworthljx.xml
+Sitemap:https://codewithsadiq.com/midisapt.xml
+Sitemap:https://codewithsadiq.com/dystrophiakgv.xml
+Sitemap:https://codewithsadiq.com/ovalnesseszxh.xml
+Sitemap:https://codewithsadiq.com/sitemap.xml
