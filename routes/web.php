@@ -28,6 +28,7 @@ Route::get('/contact-us', function () {
 // Route::get("/apply",[HomeController::class,"apply"])->name('apply');
 
 Route::get("/response",[HomeController::class,"response"])->name('response');
+Route::get("/view-course/{course}",[HomeController::class,"viewCourse"])->name('viewCourse');
 
 Route::post('/apply',[AdminController::class,'addStudent'])->name('apply.addmission');
 

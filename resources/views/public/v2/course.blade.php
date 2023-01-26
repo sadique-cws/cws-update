@@ -19,7 +19,7 @@
                                 Sadique Hussain</div>
                         </div>
                         <br>
-                        <a href="" class="bg-teal-500 text-white px-3 py-3 mt-5 items-end">View</a>
+                        <a href="{{route('viewCourse', $course)}}" class="bg-teal-500 text-white px-3 py-3 mt-5 items-end">View</a>
                     </div>
                 </div>
             @endforeach

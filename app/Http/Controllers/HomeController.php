@@ -20,6 +20,10 @@ class HomeController extends Controller
         $data['courses'] = Course::where('status',true)->get();
         return view('public/courses',$data);
     }
+    public function ViewCourse(Course $course){
+        $data['course'] = $course;
+        return view('public/v2/viewCourse',$data);
+    }
 
     public function apply(){
         return view('public/addmission');
