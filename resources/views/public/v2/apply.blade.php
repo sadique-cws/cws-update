@@ -7,77 +7,77 @@
     </style>
 @endsection
 @section('content')
-<div class="row my-5 ">
-    <div class="col-lg-5 col-md-6 d-lg-block d-none pt-5">
+<div class="my-5 flex w-10/12 mx-auto justify-center">
+    <div class="w-5/12 pt-5 flex justify-center">
         <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_qfkr9cgr.json"  background="rgba(0, 0, 0, 0)"  speed="1"  style="width: 500px; height: 500px;"    autoplay></lottie-player>
     </div>
-    <div class="col-lg-7 p-lg-3 col-md-10 mx-lg-0 mx-auto">
-        <div class="card bg-transparent appy-div border-0">
-            <div class="card-header border-0 bg-transparent">
-                <h5 class="text-theme">Apply for Addmission</h5>
+    <div class="w-7/12 ">
+        <div class="bg-white border  rounded-lg shadow">
+            <div class="p-3 bg-transparent">
+                <h5 class="text-theme font-semibold text-4xl">Apply for Admission</h5>
             </div>
-            <div class="card-body">
+            <div class="p-3">
                 <form action="{{ route('apply.addmission') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <input type="hidden" name="flag" value="0">
-                    <div class="mb-3">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" value="{{ old('name') }}" id="name" class="form-control rounded shadow-sm">
+                    <div class="mb-3 flex flex-col">
+                        <label for="name">Full Name</label>
+                        <input type="text" name="name" value="{{ old('name') }}" id="name" class="rounded border shadow border-slate-400 px-3 py-2" placeholder="E.g Sadique Hussain">
                         @error('name')
                             <p class="small text-danger">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="row">
-                        <div class="mb-3 col-lg-6">
-                            <label for="mother_name">Mother Name</label>
-                            <input type="text" name="mother_name" value="{{ old('mother_name') }}" id="mother_name" class="form-control rounded shadow-sm">
+                    <div class="flex justify-center gap-3">
+                        <div class="mb-3 flex flex-col flex-1">
+                            <label class="" for="mother_name">Mother Name</label>
+                            <input type="text" name="mother_name" value="{{ old('mother_name') }}" id="mother_name" class="rounded border shadow border-slate-400 px-3 py-2">
                             @error('mother_name')
                                 <p class="small text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="mb-3 col-lg-6">
+                        <div class="mb-3 flex flex-col flex-1">
                             <label for="father_name">Father Name</label>
-                            <input type="text" name="father_name" value="{{ old('father_name') }}" id="father_name" class="form-control rounded shadow-sm">
+                            <input type="text" name="father_name" value="{{ old('father_name') }}" id="father_name" class="rounded border shadow border-slate-400 px-3 py-2">
                             @error('father_name')
                                 <p class="small text-danger">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
-                   <div class="row">
-                        <div class="mb-3 col-lg-6">
+                   <div class="flex gap-3">
+                        <div class="mb-3 flex flex-col flex-1">
                             <label for="contact">Contact</label>
-                            <input type="number" name="contact" value="{{ old('contact') }}" id="contact" class="form-control rounded shadow-sm">
+                            <input type="number" name="contact" placeholder="Enter without +91" value="{{ old('contact') }}" id="contact" class="rounded border shadow border-slate-400 px-3 py-2" >
                             @error('contact')
                                 <p class="small text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="mb-3 col-lg-6">
+                        <div class="mb-3 flex flex-col flex-1">
                             <label for="email">Email</label>
-                            <input type="email" name="email" value="{{ old('email') }}" id="email" class="form-control rounded shadow-sm">
+                            <input type="email" name="email" value="{{ old('email') }}" placeholder="E.g someone@example.com" id="email" class="rounded border shadow border-slate-400 px-3 py-2">
                             @error('email')
                                 <p class="small text-danger">{{ $message }}</p>
                             @enderror
                         </div>
                    </div>
-                   <div class="row mb-3">
-                        <div class="col-lg-4 col-md-3 col-6">
+                   <div class="flex mb-3 gap-3">
+                        <div class="mb-3 flex flex-col flex-1">
                             <label for="education">Education</label>
-                            <input type="text" name="education" value="{{ old('education') }}" class="form-control shadow-sm" id="eductaion">
+                            <input type="text" name="education" placeholder="E.g BCA, BTech, MCA etc" value="{{ old('education') }}" class="rounded border shadow border-slate-400 px-3 py-2"  id="eductaion">
                             @error('education')
                                 <p class="small text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="col-lg-4 col-md-3 col-6">
+                        <div class="mb-3 flex flex-col flex-1">
                             <label for="dob">Date of Birth</label>
-                            <input type="date"  name="dob" value="{{ old('dob') }}"  class="form-control shadow-sm" id="dob">
+                            <input type="date"  name="dob" value="{{ old('dob') }}"  class="rounded border shadow border-slate-400 px-3 py-1.5" id="dob">
                             @error('dob')
                                 <p class="small text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="col-lg-4 col-md-3 col-12">
+                        <div class="mb-3 flex flex-col flex-1">
                             <label for="education">Gender</label>
-                            <select name="gender" id="gender" class="form-select">
-                                <option value="" selected hidden disabled></option>
+                            <select name="gender" id="gender" class="rounded border shadow border-slate-400 px-3 py-2">
+                                <option value="" selected hidden disabled>Choose Gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                                 <option value="other">Other</option>
@@ -85,17 +85,33 @@
                             @error('gender')
                                 <p class="small text-danger">{{ $message }}</p>
                             @enderror
-                        </div>
+                        </div> 
                    </div>
-                   <div class="mb-3">
+                   <div class="mb-3 flex flex-col">
                        <label for="address">Address</label>
-                       <textarea name="address" id="address" cols="30" rows="3" class="form-control">{{ old('address') }}</textarea>
+                       <textarea name="address" placeholder="Write Address details" id="address" cols="30" rows="3" class="rounded border shadow border-slate-400 px-3 py-2">{{ old('address') }}</textarea>
                        @error('address')
                             <p class="small text-danger">{{ $message }}</p>
                         @enderror
                     </div>
-                   <div class="mb-3">
-                       <button class="btn btn-apply w-100">Add</button>
+                    <div class="flex justify-center gap-3">
+                        <div class="mb-3 flex flex-col flex-1">
+                            <label class="" for="password">Password</label>
+                            <input type="password" name="password" value="{{ old('password') }}" id="password" class="rounded border shadow border-slate-400 px-3 py-2" placeholder="Must be 5 character length">
+                            @error('password')
+                                <p class="small text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="mb-3 flex flex-col flex-1">
+                            <label for="confirm_password">Confirm password</label>
+                            <input type="text" name="confirm_password" value="{{ old('confirm_password') }}" id="confirm_password" class="rounded border shadow border-slate-400 px-3 py-2" placeholder="ReEnter Password">
+                            @error('confirm_password')
+                                <p class="small text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+                   <div class="flex justify-end">
+                       <button class="flex-1 bg-teal-700 text-white px-3 py-2 rounded hover:bg-teal-900">Add</button>
                    </div>
                 </form>
             </div>
@@ -104,5 +120,6 @@
 </div>
 @endsection
 @section('js')
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 @endsection

@@ -13,24 +13,22 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Placement;
 use App\Models\Course;
 
-Route::get('/v2', function () {
-    return view('layouts.publicBase');
+
+
+
+Route::view('/contact-us', 'public.contact')->name('contact');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/apply',[AdminController::class,'addStudent'])->name('apply.addmission');
 });
 
-// Route::get("/",[HomeController::class,"home"])->name('homepage');
 
-Route::get('/contact-us', function () {
-    return view('public.contact');
-})->name('contact');
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/response', 'response')->name('response');
+    Route::get('/view-course/{course}', 'viewCourse')->name('viewCourse');
+});
 
-// Route::get("/courses",[HomeController::class,"courses"])->name('courses');
-
-// Route::get("/apply",[HomeController::class,"apply"])->name('apply');
-
-Route::get("/response",[HomeController::class,"response"])->name('response');
-Route::get("/view-course/{course}",[HomeController::class,"viewCourse"])->name('viewCourse');
-
-Route::post('/apply',[AdminController::class,'addStudent'])->name('apply.addmission');
 
 Route::get('/pay-dues', function () {
     return view('public.pay_dues');
@@ -49,7 +47,6 @@ Route::get('/get-dues', function () {
     }
     $data['dues'] = Payments::where('student_id',$user[0]->id)->get();
     return view('public.v2.online-payment',$data);
-    // return view('public.pay_dues',$data);
 })->name('get.dues');
 
 Route::get('/check/{pay_id}', function ($payment_id) {
@@ -110,8 +107,6 @@ Route::prefix('v2')->group(function () {
     
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/image_upload', [AdminController::class,"upload"])->name('upload');
-    
-    // Route::resource('course', CourseController::class);
     
     Route::get('/',[AdminController::class,'index'] )->name('admin.dashboard');
 

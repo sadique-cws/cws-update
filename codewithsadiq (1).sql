@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2023 at 03:00 PM
+-- Generation Time: Jan 28, 2023 at 08:17 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -93,7 +93,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2021_08_25_174229_create_payments_table', 1),
 (6, '2021_11_08_065738_create_courses_table', 1),
 (7, '2021_12_12_081438_add_status_col_in_user', 2),
-(11, '2021_12_12_082324_create_placements_table', 3);
+(11, '2021_12_12_082324_create_placements_table', 3),
+(12, '2023_01_26_103319_create_student_course_details_table', 4);
 
 -- --------------------------------------------------------
 
@@ -1018,7 +1019,11 @@ INSERT INTO `payments` (`id`, `student_id`, `amount`, `status`, `payment_date`, 
 (1455, 82, '700', 'dues', NULL, 'cash', '2023-01-23', '2023-01-23 22:04:11', '2023-01-23 22:04:11'),
 (1456, 124, '700', 'dues', NULL, 'cash', '2023-01-23', '2023-01-23 22:04:11', '2023-01-23 22:04:11'),
 (1457, 53, '700', 'dues', NULL, 'cash', '2023-01-24', '2023-01-25 01:10:24', '2023-01-25 01:10:24'),
-(1458, 176, '700', 'dues', NULL, 'cash', '2023-01-24', '2023-01-25 01:10:26', '2023-01-25 01:10:26');
+(1458, 176, '700', 'dues', NULL, 'cash', '2023-01-24', '2023-01-25 01:10:26', '2023-01-25 01:10:26'),
+(1459, 60, '700', 'dues', NULL, 'cash', '2023-01-27', '2023-01-28 00:24:25', '2023-01-28 00:24:25'),
+(1460, 143, '700', 'dues', NULL, 'cash', '2023-01-26', '2023-01-28 00:24:26', '2023-01-28 00:24:26'),
+(1461, 178, '700', 'dues', NULL, 'cash', '2023-01-26', '2023-01-28 00:24:26', '2023-01-28 00:24:26'),
+(1462, 195, '700', 'dues', NULL, 'cash', '2023-01-27', '2023-01-28 00:24:26', '2023-01-28 00:24:26');
 
 -- --------------------------------------------------------
 
@@ -1260,6 +1265,31 @@ INSERT INTO `placements` (`id`, `name`, `role`, `company_name`, `joining_date`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `student_course_details`
+--
+
+CREATE TABLE `student_course_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `course_id` bigint(20) UNSIGNED NOT NULL,
+  `type` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `student_course_details`
+--
+
+INSERT INTO `student_course_details` (`id`, `user_id`, `course_id`, `type`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 4, '1', 1, '2023-01-28 00:24:41', '2023-01-28 00:24:41'),
+(3, 1, 3, '1', 0, '2023-01-28 00:26:57', '2023-01-28 00:26:57'),
+(4, 214, 6, '1', 0, '2023-01-28 01:42:08', '2023-01-28 01:42:08');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -1419,11 +1449,24 @@ INSERT INTO `users` (`id`, `name`, `mother_name`, `father_name`, `contact`, `edu
 (210, 'Abhijeet mishra', 'Kawita mishra', 'Diwakar mishra', '8210507978', 'BCA', '2004-10-18', 'male', 'Saraswati nagar madhubani purnea', 'student', NULL, 'iabhijeetmishra7592@gmail.com', NULL, '$2y$10$42CWoYFZXcpPS6z61wcVw.QtbAkQEU4AQILa2qpTUpI4c.JCRv4ny', NULL, '2023-01-17 22:11:25', '2023-01-17 22:11:25', 0),
 (211, 'Sumit Kumar', 'Veena Devi', 'Suranjan Kumar', '8292414183', 'BCA HONS', '2002-07-24', 'male', 'Sukh nagar, purnia', 'student', NULL, 'Sk8292414183@gmail.com', NULL, '$2y$10$8nkoCBrMj4C3vXs780uiiO3MHy2re2QJaDn3BPGoH9i.izZI6iydK', NULL, '2023-01-18 01:37:43', '2023-01-18 01:37:43', 0),
 (212, 'Prince raj', 'Juli devi', 'Amar poddar', '8102971107', 'Bca honers', '2004-01-01', 'male', 'Hatda,Jotalkhay', 'student', NULL, 'Pamar5030@gmail.com', NULL, '$2y$10$xjORcjJ.EtZEHttRaK57AuE86o.fXuVKxl8t8ZmY0h56EKCtLgZ/a', NULL, '2023-01-22 09:20:53', '2023-01-22 09:20:53', 0),
-(213, 'Deepak Singh', 'Ranjan', 'Shiv', '7903014220', 'Ba', '1999-01-01', 'male', 'Course fees', 'student', NULL, 'deepaksinghsou@gmail.com', NULL, '$2y$10$dsU3s2s1TLqpLxv.wNw2Z.uP0DD6fELRnIMO3OX6luWiL23gTncxG', NULL, '2023-01-23 13:20:35', '2023-01-23 13:20:35', 0);
+(213, 'Deepak Singh', 'Ranjan', 'Shiv', '7903014220', 'Ba', '1999-01-01', 'male', 'Course fees', 'student', NULL, 'deepaksinghsou@gmail.com', NULL, '$2y$10$dsU3s2s1TLqpLxv.wNw2Z.uP0DD6fELRnIMO3OX6luWiL23gTncxG', NULL, '2023-01-23 13:20:35', '2023-01-23 13:20:35', 0),
+(214, 'sadique kumar', 'rani', 'raja', '9546805581', 'bca', '2023-01-01', 'male', 'prnea', 'student', NULL, 'cwspurnea@gmail.com', NULL, '$2y$10$phQmvW6TNhJ4nCFERYz5fuJVau/w5nzZdtUJaeFQFEewe.r7lEKHG', NULL, '2023-01-28 01:06:02', '2023-01-28 01:06:02', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `payments`
@@ -1453,6 +1496,14 @@ ALTER TABLE `placements`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `student_course_details`
+--
+ALTER TABLE `student_course_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_course_details_user_id_foreign` (`user_id`),
+  ADD KEY `student_course_details_course_id_foreign` (`course_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -1464,10 +1515,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1459;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1463;
 
 --
 -- AUTO_INCREMENT for table `paytms`
@@ -1488,10 +1551,16 @@ ALTER TABLE `placements`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
+-- AUTO_INCREMENT for table `student_course_details`
+--
+ALTER TABLE `student_course_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=215;
 
 --
 -- Constraints for dumped tables
@@ -1502,6 +1571,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `payments`
   ADD CONSTRAINT `payments_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `student_course_details`
+--
+ALTER TABLE `student_course_details`
+  ADD CONSTRAINT `student_course_details_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
+  ADD CONSTRAINT `student_course_details_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

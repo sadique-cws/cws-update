@@ -83,11 +83,7 @@ class AdminController extends Controller
         return view('admin.students',$data);
     }
     
-    public function studentApi(){
-
-        $data = User::select("name","email",'id','dob','gender')->where('user_type','student')->where('status',false)->get();
-        return $data;
-    }
+   
     
        public function RemoveStudent($id){
 
@@ -95,41 +91,7 @@ class AdminController extends Controller
         $student->delete();
         return redirect()->route("students");
     }
-    public function addStudentApi(Request $request){
-        $request->validate([
-            'name'=>'required',
-            'father_name'=>'required',
-            'mother_name'=>'required',
-            'contact'=>'required|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
-            'gender'=>'required',
-            'dob'=>'required',
-        ]);
-
-
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        $password =  substr(str_shuffle($chars), 0, 8);
-
-        $student = new User();
-        $student->name = $request->name;
-        $student->mother_name = $request->mother_name;
-        $student->father_name = $request->father_name;
-        $student->contact = $request->contact;
-        $student->email = $request->email;
-        $student->gender = $request->gender;
-        $student->dob = $request->dob;
-        $student->address = $request->address;
-        $student->education = $request->education;
-        $student->password = Hash::make($password);
-
-        if($request->has('flag') && $request->flag == 1){
-            $student->status = true;
-        }
-        $student->save();
-        
-        return ['msg' => "student record inserted successfullly"];
-    }
-
+    
     public function addStudent(Request $request){
         $request->validate([
             'name'=>'required',
@@ -139,11 +101,9 @@ class AdminController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'gender'=>'required',
             'dob'=>'required',
+            'password'=>'required',
         ]);
 
-
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        $password =  substr(str_shuffle($chars), 0, 8);
 
         $student = new User();
         $student->name = $request->name;
@@ -155,7 +115,7 @@ class AdminController extends Controller
         $student->dob = $request->dob;
         $student->address = $request->address;
         $student->education = $request->education;
-        $student->password = Hash::make($password);
+        $student->password = Hash::make($request->password);
 
         if($request->has('flag') && $request->flag == 1){
             $student->status = true;
