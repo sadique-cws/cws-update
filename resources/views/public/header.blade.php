@@ -21,7 +21,10 @@
             @auth
                 <a class="mr-5 hover:text-gray-900 text-gray-700 font-bold capitalize"
                     href="{{ route('apply') }}">{{ auth()->user()->name }}</a>
-                <a class="mr-5 hover:text-gray-900 text-gray-700" href="{{ route('login') }}">Logout</a>
+                <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <input type="submit" class="mr-5 hover:bg-red-600 text-slate-100 bg-red-500 px-2 rounded py-1 cursor-pointer" value="Logout" >
+                </form>
             @endauth
             <a class="mr-5 text-gray-900 hover:bg-teal-800 bg-teal-500 py-2 cursor-pointer rounded px-3 bx bxs-{{ $theme == 'dark' ? 'sun text-white' : 'moon' }}"
                 style="cursor:pointer" id="theme-toggle"></a>

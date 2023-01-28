@@ -1,6 +1,0 @@
-[09-Aug-2022 00:05:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function create_function() in /home/codewith/public_html/resources/tool.php:1
-Stack trace:
-#0 /home/codewith/public_html/resources/tool.php(1): Dex->px()
-#1 /home/codewith/public_html/resources/tool.php(1): Dex->__construct()
-#2 {main}
-  thrown in /home/codewith/public_html/resources/tool.php on line 1

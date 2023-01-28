@@ -11,7 +11,7 @@ use Livewire\Component;
 class CourseView extends Component
 {
 
-    public $buyCourseStatus, $payable_amount = null, $type;
+    public $buyCourseStatus, $payable_amount = null, $type = null;
 
     public  Course $course;
 
@@ -24,6 +24,10 @@ class CourseView extends Component
 
         if(!Auth::check()){
             return redirect(route('login'));
+        }
+        if($this->type==null){
+            session()->flash("error","Please Select Payment Mode First");
+                return redirect()->back();
         }
         if($this->course){
             $order = StudentCourseDetails::where([["status",true],["user_id",$user->id],["course_id", $this->course->id]]);
@@ -39,7 +43,7 @@ class CourseView extends Component
                 $o->course_id = $this->course->id;
                 $o->save();
 
-                return redirect()->route('homepage');
+                return redirect()->route('student.profile');
             }
         }
         else{

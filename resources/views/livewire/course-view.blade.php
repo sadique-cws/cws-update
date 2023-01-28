@@ -110,7 +110,7 @@
                                                     </span>
 
                                                     <input type="radio" wire:model="type" id="monthly"
-                                                        value="1" class="absolute h-0 w-0 appearance-none" />
+                                                        value="0" class="absolute h-0 w-0 appearance-none" />
                                                     <span aria-hidden="true"
                                                         class="hidden absolute inset-0 border-2 border-green-500 bg-green-200 bg-opacity-10 rounded-lg">
                                                         <span
@@ -137,7 +137,7 @@
                                                     </span>
 
                                                     <input type="radio" wire:model="type" id="course"
-                                                        value="2" class="absolute h-0 w-0 appearance-none" />
+                                                        value="1" class="absolute h-0 w-0 appearance-none" />
                                                     <span aria-hidden="true"
                                                         class="hidden absolute inset-0 border-2 border-green-500 bg-green-200 bg-opacity-10 rounded-lg">
                                                         <span
@@ -183,8 +183,7 @@
 
                                                 <form action="" method="post">
                                                     <button type="button" wire:click="addCourse"
-                                                        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">Pay
-                                                        Course Fee</button>
+                                                        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">Add In your Cart</button>
                                                 </form>
                                             </div>
                                         </div>
