@@ -94,6 +94,7 @@ Route::prefix('v2')->group(function () {
 Route::prefix('account')->middleware('auth')->group(function(){
     Route::controller(StudentController::class)->group(function () {
        Route::get("profile", "profile")->name('student.profile');
+       Route::get("/payments", "myPayments")->name('student.payments');
     });
 });
 
