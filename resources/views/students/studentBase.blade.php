@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="flex flex-1 justify-center flex-col mt-5">
-                        <a href=""
+                        <a href="{{route('student.profile')}}"
                             class="bg-white w-full px-2 py-3 border-y flex items-center gap-3 hover:bg-slate-100 text-slate-700">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-6 h-6">

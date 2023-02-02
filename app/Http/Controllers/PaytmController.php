@@ -14,8 +14,19 @@ class PaytmController extends Controller
     public function pay(Request $request){
 
         $payment_id = $request->payment_id;
+        
         $user = User::where([['contact',$request->contact],['status',true]])->first();
         $amount = $request->amount;
+
+        if($payment_id == null){
+            $paymentData = [
+                'student_id' => $user->id,
+                'amount' => $amount,
+                'amount' => $amount,
+            ];
+           $payment =  Payments::create($paymentData);
+           $payment_id = $payment->id;
+        }
 
         $userData = [
             'payment_id' => $payment_id,

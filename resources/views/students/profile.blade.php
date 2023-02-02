@@ -25,7 +25,7 @@
             </div>
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Last Name</div>
-                <div class="px-4 py-2">{{ $name[1] }}</div>
+                <div class="px-4 py-2">@if (count($name) > 1)  {{$name[1]}}  @endif</div>
             </div>
             <div class="grid grid-cols-2">
                 <div class="px-4 py-2 font-semibold">Gender</div>
@@ -146,9 +146,16 @@
                             <del class="text-gray-500 text-xs">₹{{ $item->course->fee }}</del>
                         </div>
                     </div>
-                    <a href=""
+
+                    <form action="{{ route('paytm.payment') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="amount" value="{{ $item->course->discount_fee }}">
+                        <input type="hidden" name="contact" value="{{ auth()->user()->contact }}">
+                        <button type="submit"
                         class="bg-red-400 text-white hover:bg-red-500 shadow-lg rounded-l-xl py-3 px-2">Pay
-                        Now</a>
+                            Online</button>
+                    </form>
+                   
                 @endif
             </li>
         @empty

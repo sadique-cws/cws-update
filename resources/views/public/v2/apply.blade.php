@@ -17,14 +17,14 @@
                 <h5 class="text-theme font-semibold text-4xl">Apply for Admission</h5>
             </div>
             <div class="p-3">
-                <form action="{{ route('apply.addmission') }}" enctype="multipart/form-data" method="post">
+                <form action="{{ route('register') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <input type="hidden" name="flag" value="0">
                     <div class="mb-3 flex flex-col">
                         <label for="name">Full Name</label>
                         <input type="text" name="name" value="{{ old('name') }}" id="name" class="rounded border shadow border-slate-400 px-3 py-2" placeholder="E.g Sadique Hussain">
                         @error('name')
-                            <p class="small text-danger">{{ $message }}</p>
+                            <p class="text-xs  text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="flex justify-center gap-3">
@@ -32,14 +32,14 @@
                             <label class="" for="mother_name">Mother Name</label>
                             <input type="text" name="mother_name" value="{{ old('mother_name') }}" id="mother_name" class="rounded border shadow border-slate-400 px-3 py-2">
                             @error('mother_name')
-                                <p class="small text-danger">{{ $message }}</p>
+                                <p class="text-xs  text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="mb-3 flex flex-col flex-1">
                             <label for="father_name">Father Name</label>
                             <input type="text" name="father_name" value="{{ old('father_name') }}" id="father_name" class="rounded border shadow border-slate-400 px-3 py-2">
                             @error('father_name')
-                                <p class="small text-danger">{{ $message }}</p>
+                                <p class="text-xs  text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -48,14 +48,14 @@
                             <label for="contact">Contact</label>
                             <input type="number" name="contact" placeholder="Enter without +91" value="{{ old('contact') }}" id="contact" class="rounded border shadow border-slate-400 px-3 py-2" >
                             @error('contact')
-                                <p class="small text-danger">{{ $message }}</p>
+                                <p class="text-xs  text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="mb-3 flex flex-col flex-1">
                             <label for="email">Email</label>
                             <input type="email" name="email" value="{{ old('email') }}" placeholder="E.g someone@example.com" id="email" class="rounded border shadow border-slate-400 px-3 py-2">
                             @error('email')
-                                <p class="small text-danger">{{ $message }}</p>
+                                <p class="text-xs  text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                    </div>
@@ -64,14 +64,14 @@
                             <label for="education">Education</label>
                             <input type="text" name="education" placeholder="E.g BCA, BTech, MCA etc" value="{{ old('education') }}" class="rounded border shadow border-slate-400 px-3 py-2"  id="eductaion">
                             @error('education')
-                                <p class="small text-danger">{{ $message }}</p>
+                                <p class="text-xs  text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="mb-3 flex flex-col flex-1">
                             <label for="dob">Date of Birth</label>
                             <input type="date"  name="dob" value="{{ old('dob') }}"  class="rounded border shadow border-slate-400 px-3 py-1.5" id="dob">
                             @error('dob')
-                                <p class="small text-danger">{{ $message }}</p>
+                                <p class="text-xs  text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="mb-3 flex flex-col flex-1">
@@ -83,7 +83,7 @@
                                 <option value="other">Other</option>
                             </select>
                             @error('gender')
-                                <p class="small text-danger">{{ $message }}</p>
+                                <p class="text-xs  text-red-600">{{ $message }}</p>
                             @enderror
                         </div> 
                    </div>
@@ -91,7 +91,7 @@
                        <label for="address">Address</label>
                        <textarea name="address" placeholder="Write Address details" id="address" cols="30" rows="3" class="rounded border shadow border-slate-400 px-3 py-2">{{ old('address') }}</textarea>
                        @error('address')
-                            <p class="small text-danger">{{ $message }}</p>
+                            <p class="text-xs  text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="flex justify-center gap-3">
@@ -99,14 +99,14 @@
                             <label class="" for="password">Password</label>
                             <input type="password" name="password" value="{{ old('password') }}" id="password" class="rounded border shadow border-slate-400 px-3 py-2" placeholder="Must be 5 character length">
                             @error('password')
-                                <p class="small text-danger">{{ $message }}</p>
+                                <p class="text-xs  text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="mb-3 flex flex-col flex-1">
-                            <label for="confirm_password">Confirm password</label>
-                            <input type="text" name="confirm_password" value="{{ old('confirm_password') }}" id="confirm_password" class="rounded border shadow border-slate-400 px-3 py-2" placeholder="ReEnter Password">
-                            @error('confirm_password')
-                                <p class="small text-danger">{{ $message }}</p>
+                            <label for="password_confirmation">Confirm password</label>
+                            <input type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" id="password_confirmation" class="rounded border shadow border-slate-400 px-3 py-2" placeholder="ReEnter Password">
+                            @error('password_confirmation')
+                                <p class="text-xs  text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>

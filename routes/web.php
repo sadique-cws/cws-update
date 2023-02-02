@@ -20,7 +20,7 @@ use App\Models\Course;
 Route::view('/contact-us', 'public.contact')->name('contact');
 Route::view('/pay-dues', 'public.pay_dues')->name('dues');
 Route::view('/', 'public.v2.index')->name('homepage');
-Route::view('/apply', 'public.v2.apply')->name('apply');
+Route::view('/apply', 'public.v2.apply')->name('apply')->middleware('guest');
 Route::view('/payment','public.v2.online-payment')->name('payment');
 
 Route::get('/courses', function () {

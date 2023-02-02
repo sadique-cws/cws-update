@@ -48,6 +48,21 @@
                     </x-button>
                 </div>
             </form>
+
+            <div class="flex-1 w-full mt-5">
+                @if (session()->has('status'))
+                    <div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700" role="alert">
+                            {{ $error }}</div>
+                    @endforeach
+                @endif
+                
+            </div>
         </div>
     </div>
 @endsection

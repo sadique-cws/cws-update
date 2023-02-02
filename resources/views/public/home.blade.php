@@ -12,7 +12,7 @@
     </div>
 
     <div class="container">
-        <h4  class="h5 border-4 border-start border-secondary ps-2 mb-4 border-0">Our Courses</h4>
+        <h4  class="h5 border-4 border-start border-secondary ps-2 mb-4">Our Courses</h4>
         <div class="row mt-3 card-group">
             @foreach ($courses as $course)
             <div class="col-lg-2 col-6 mb-3">
