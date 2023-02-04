@@ -78,15 +78,16 @@
                     <div class="flex mt-5">
                         <span class="title-font font-medium text-2xl text-gray-900">₹{{ $course->discount_fee }}
                             <del>₹{{ $course->fee }}</del></span>
-                        <button data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        <button data-modal-toggle="staticModal" data-modal-target="#staticModal"
                             class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add
                             Course</button>
                         <div class="flex">
 
                             <div wire:ignore.self
-                                class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                                id="exampleModal" tabindex="-1" data-bs-backdrop="static"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
+                                id="staticModal" tabindex="-1" data-modal-backdrop="static"
+                                aria-labelledby="staticModalLabel" aria-hidden="true">
+
                                 <div class="modal-dialog relative w-auto pointer-events-none">
                                     <div
                                         class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
@@ -96,7 +97,7 @@
                                                 id="exampleModalLabel">Select Payment Type</h5>
                                             <button type="button"
                                                 class="px-6 py-2.5 bg-slate-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                                                data-bs-dismiss="modal">Close</button>
+                                                data-modal-hide="staticModal">Close</button>
                                         </div>
                                         <div class="modal-body relative p-4">
                                             <div class="flex flex-row gap-6">
@@ -110,7 +111,7 @@
                                                     </span>
 
                                                     <input type="radio" wire:model="type" id="monthly"
-                                                        value="0" class="absolute h-0 w-0 appearance-none" />
+                                                        value="0" class="absolute h-0 w-0 hidden" />
                                                     <span aria-hidden="true"
                                                         class="hidden absolute inset-0 border-2 border-green-500 bg-green-200 bg-opacity-10 rounded-lg">
                                                         <span
@@ -137,7 +138,7 @@
                                                     </span>
 
                                                     <input type="radio" wire:model="type" id="course"
-                                                        value="1" class="absolute h-0 w-0 appearance-none" />
+                                                        value="1" class="absolute h-0 w-0 hidden" />
                                                     <span aria-hidden="true"
                                                         class="hidden absolute inset-0 border-2 border-green-500 bg-green-200 bg-opacity-10 rounded-lg">
                                                         <span
@@ -180,10 +181,10 @@
                                                 </div>
                                             @endif
                                             <div class="flex justify-end">
-
                                                 <form action="" method="post">
                                                     <button type="button" wire:click="addCourse"
-                                                        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">Add In your Cart</button>
+                                                        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">Add
+                                                        In your Cart</button>
                                                 </form>
                                             </div>
                                         </div>

@@ -88,7 +88,7 @@
                             @if ($item->type == 0)
                                 <div class="text-teal-600 truncate">{{ $item->course->title }}</div>
                                 <div>
-                                    <span class="text-teal-800 font-semibold">₹700</span>
+                                    <span class="text-teal-800 font-semibold">₹{{$item->monthly_fee}}</span>
                                     <span class="text-gray-500 text-xs">(Monthly)</span>
                                 </div>
                         </div>
@@ -126,37 +126,28 @@
 
         @forelse ($pendingCourses as $item)
             <li class="flex justify-between bg-slate-100 border border-red-300 rounded-md items-center ">
-                @if ($item->type == 0)
                     <div class="flex flex-col  p-3">
                         <div class="text-teal-600">{{ $item->course->title }}</div>
                         <div>
-                            <span class="text-teal-800 font-semibold">₹700</span>
-                            <span class="text-gray-500 text-xs">(Monthly)</span>
-                        </div>
-                    </div>
-                    <a href=""
-                        class="bg-red-400 text-white hover:bg-red-500 shadow-lg rounded-l-xl py-3 px-2">Pay
-                        Now</a>
-                @else
-                    <div class="flex flex-col  p-3">
-                        <div class="text-teal-600">{{ $item->course->title }}</div>
-                        <div>
-                            <span
+                            @if ($item->type == 0)
+                                <span class="text-teal-800 font-semibold">₹700</span>
+                                <span class="text-gray-500 text-xs">(Monthly)</span>
+                            @else
+                                <span
                                 class="text-teal-800 font-semibold">₹{{ $item->course->discount_fee }}</span>
-                            <del class="text-gray-500 text-xs">₹{{ $item->course->fee }}</del>
+                                <del class="text-gray-500 text-xs">₹{{ $item->course->fee }}</del>
+                            @endif
                         </div>
                     </div>
-
                     <form action="{{ route('paytm.payment') }}" method="post">
                         @csrf
-                        <input type="hidden" name="amount" value="{{ $item->course->discount_fee }}">
+                        <input type="hidden" name="amount" value="@if($item->type==1){{ $item->course->discount_fee }} @else {{$item->monthly_fee}} @endif">
+                        <input type="hidden" name="payment_id"   value="{{$item->id}}">
                         <input type="hidden" name="contact" value="{{ auth()->user()->contact }}">
                         <button type="submit"
                         class="bg-red-400 text-white hover:bg-red-500 shadow-lg rounded-l-xl py-3 px-2">Pay
                             Online</button>
                     </form>
-                   
-                @endif
             </li>
         @empty
             <p>Not Yet Course</p>

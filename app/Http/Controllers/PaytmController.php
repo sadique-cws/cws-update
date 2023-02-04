@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Paytm;
 use Illuminate\Http\Request;
 use Anand\LaravelPaytmWallet\Facades\PaytmWallet;
-use App\Models\Application;
+use App\Models\StudentCourseDetails;
 use App\Models\Payments;
 use App\Models\User;
 
@@ -14,6 +14,7 @@ class PaytmController extends Controller
     public function pay(Request $request){
 
         $payment_id = $request->payment_id;
+       
         
         $user = User::where([['contact',$request->contact],['status',true]])->first();
         $amount = $request->amount;
@@ -49,7 +50,7 @@ class PaytmController extends Controller
         ]);
         return $payment->receive();
     }
-
+    
 
     public function paytmcallback()
     {
@@ -76,11 +77,17 @@ class PaytmController extends Controller
 
         if ($transaction->isSuccessful()) {
 
-            $p = Payments::where('id',$pay->payment_id)->first();
-            $p->status = "paid";
-            $p->payment_mode = "online";
-            $p->payment_date = $response['TXNDATE'];
-            $p->save();
+            // $p = Payments::where('id',$pay->payment_id)->first();
+            // $p->status = "paid";
+            // $p->payment_mode = "online";
+            // $p->payment_date = $response['TXNDATE'];
+            // $p->save();
+
+            // updating course details table status after payment
+            $courseDetails = StudentCourseDetails::findOrFail($pay->payment_id);
+            $courseDetails->status = 1;
+            $courseDetails->save();
+
 
             toast('Your Payment of ₹'."$amount".' is successfully done','success');
             return redirect()->back();

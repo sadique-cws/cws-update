@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class StudentController extends Controller
 {
     public function profile(){
+        generate_payment();
         $data['courses'] = StudentCourseDetails::where([['status',true],['user_id', Auth::id()]])->get();
         $data['pendingCourses'] = StudentCourseDetails::where([['status',false],['user_id', Auth::id()]])->get();
         return view("students.profile",$data);

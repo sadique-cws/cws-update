@@ -15,4 +15,8 @@ class StudentCourseDetails extends Model
     {
         return $this->hasOne(Course::class,'id','course_id');
     }
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class,'id','user_id');
+    }
 }
