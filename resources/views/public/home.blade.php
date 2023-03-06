@@ -31,7 +31,7 @@
     </div>
 
     <div class="container mt-4">
-        <h4  class="h5 border-4 border-start border-secondary ps-2 mb-4 border-0">Students Achievements</h4>
+        <h4  class="h5 border-start border-secondary ps-2 mb-4 border-0">Students Achievements</h4>
         <div class="row">
             @foreach ($placements as $placement)
             <div class="col-lg-2 col-6 mb-3">

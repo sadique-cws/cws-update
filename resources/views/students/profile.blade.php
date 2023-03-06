@@ -89,7 +89,7 @@
                                 <div class="text-teal-600 truncate">{{ $item->course->title }}</div>
                                 <div>
                                     <span class="text-teal-800 font-semibold">₹{{$item->monthly_fee}}</span>
-                                    <span class="text-gray-500 text-xs">(Monthly)</span>
+                                    <span class="text-gray-500 text-xs">(Duration: {{$item->course->duration}} Months)</span>
                                 </div>
                         </div>
                     @else
@@ -130,8 +130,8 @@
                         <div class="text-teal-600">{{ $item->course->title }}</div>
                         <div>
                             @if ($item->type == 0)
-                                <span class="text-teal-800 font-semibold">₹700</span>
-                                <span class="text-gray-500 text-xs">(Monthly)</span>
+                                <span class="text-teal-800 font-semibold">{{$item->course->getPaidAmount()}}</span>
+                                <span class="text-gray-500 text-xs">(Duration: {{$item->course->duration}} Months)</span>
                             @else
                                 <span
                                 class="text-teal-800 font-semibold">₹{{ $item->course->discount_fee }}</span>

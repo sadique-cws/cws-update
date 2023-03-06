@@ -7,17 +7,22 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 if(!function_exists('generate_payment')){
-    
-    function generate_payment(){
+    // $user = User::where([['user_type','student'],['status',true]])->get();
+    // dd($user);
+   
+}
 
-        $users = User::where([['user_type','student'],['status',true]])->get();
-        $now = new DateTime();
+// if(!function_exists('generate_payment')){
+    
+    // function generate_payment(){
+        // $users = User::where([['user_type','student'],['status',true]])->get();
+        // $now = new DateTime();
 
         
 
-        foreach($users as $user){
-            $condition = [['status',true],['type',"0"],['user_id',$user->id]];
-            $data  = StudentCourseDetails::with("user")->where($condition)->exists();
+        // foreach($users as $user){
+        //     $condition = [['status',true],['type',"0"],['user_id',$user->id]];
+        //     $data  = StudentCourseDetails::with("user")->where($condition)->exists();
 
             // if($data){
             //     dd($data);
@@ -25,13 +30,13 @@ if(!function_exists('generate_payment')){
             // else{
             //     dd($data);
             // }
-        }
+    //     }
         
 
 
 
-    }
-}
+    // }
+// }
     
     //     $user = User::where([['user_type','student'],['status',true]])->get();
     //     $now = new DateTime();
@@ -102,7 +107,8 @@ if(!function_exists('generate_payment')){
     //     }
     // }
 
-if(!function_exists('send')){
+
+    if(!function_exists('send')){
     function send($to, $message){
         $sender_id = "CWSTXT";
         $auth_key = "255108AsWkIhuXpb5c3026c8";

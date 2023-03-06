@@ -23,7 +23,6 @@ class PaytmController extends Controller
             $paymentData = [
                 'student_id' => $user->id,
                 'amount' => $amount,
-                'amount' => $amount,
             ];
            $payment =  Payments::create($paymentData);
            $payment_id = $payment->id;
