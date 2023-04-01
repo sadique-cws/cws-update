@@ -7,7 +7,7 @@
         <div class="grid grid-cols-4 gap-5  ">
             @foreach ($courses as $course)
                 <div class="bg-slate-900 rounded-xl p-5">
-                        <img src="{{ asset('images/course/' . $course->image) }}" alt="" class="w-full h-36 object-cover rounded-lg">
+                        <img src="{{ asset('images/course/' . $course->image) }}" alt="" class="w-full h-48 object-cover rounded-lg">
                     
                     <div class="flex flex-col items-stretch mt-3 gap-3">
                         <h3 class="theme-font text-white truncate">{{ $course->title }}</h3>
