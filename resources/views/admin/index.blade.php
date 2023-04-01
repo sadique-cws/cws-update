@@ -83,7 +83,7 @@
                             </div>
                         </div>
 
-                      <livewire:show-due/>
+                      
                     </div>
                 </div>
             </div>

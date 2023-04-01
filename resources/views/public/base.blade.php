@@ -10,7 +10,7 @@
 
 	<link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
 	<link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
-	<link href="{{ asset('assets/plugins/highcharts/css/highcharts.css') }}" rel="stylesheet" />
+	{{-- <link href="{{ asset('assets/plugins/highcharts/css/highcharts.css') }}" rel="stylesheet" /> --}}
 	<link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
 	<link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
 	<!-- loader-->
@@ -18,7 +18,7 @@
 	<script src="{{ asset('assets/js/pace.min.js') }}"></script>
 	<!-- Bootstrap CSS -->
 	<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 
 	<link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
@@ -51,58 +51,52 @@
 					<a href="{{ route('admin.dashboard') }}">
 						<div class="parent-icon"><i class='bx bxs-dashboard'></i>
 						</div>
-						<div class="menu-title">Dasboard</div>
+						<div class="menu-title">Home</div>
 					</a>
 				</li>
 				<li>
-					<a href="javascript:;" class="has-arrow">
+					<a href="javascript:;">
 						<div class="parent-icon"><i class='bx bxs-book-alt' ></i>
 						</div>
-						<div class="menu-title">Course</div>
+						<div class="menu-title">Our Courses</div>
 					</a>
-					<ul>
-						<li class="@yield('add_course')"> <a href="{{ route('admin.add.course') }}"><i class="bx bx-right-arrow-alt"></i>Add Course</a>
-						</li>
-						<li class="@yield('manage_course')"> <a href="{{ route('admin.courses') }}"><i class="bx bx-right-arrow-alt"></i>Manage Course</a>
-						</li>
-					</ul>
 				</li>
                 <li class="@yield('new_addmissions')">
 					<a href="{{ route('new.addmissions') }}">
 						<div class="parent-icon"><i class='bx bx-user-plus'></i>
 						</div>
-						<div class="menu-title">New Admission <sup><span class="p-1 rounded text-success bg-light-success ">{{ new_addmission()->count() }}</span></sup></div>
+						<div class="menu-title">Apply for Join Us</div>
 					</a>
 				</li>
                 <li class="@yield('students')">
 					<a href="{{ route('students') }}">
 						<div class="parent-icon"><i class='bx bx-group'></i>
 						</div>
-						<div class="menu-title">Students</div>
+						<div class="menu-title">Students Placement</div>
 					</a>
 				</li>
 				<li class="@yield('add_student')">
 					<a href="{{ route('add.student.view') }}">
-						<div class="parent-icon"><i class='bx bx-plus-circle'></i>
+						<div class="parent-icon"><i class='bx bx-landscape'></i>
 						</div>
-						<div class="menu-title">Add Students</div>
+						<div class="menu-title">Gallery</div>
 					</a>
 				</li>
 				<li>
-					<a href="javascript:;" class="has-arrow">
+					<a href="javascript:;">
 						<div class="parent-icon"><i class='bx bx-rupee'></i>
 						</div>
-						<div class="menu-title">Payments</div>
+						<div class="menu-title">Online Payment</div>
 					</a>
-					<ul>
+					{{-- <ul>
 						<li> <a href="{{ route('dues.payments') }}"><i class="bx bx-right-arrow-alt"></i>Dues</a>
 						</li>
 						<li> <a href="{{ route('paid.payments') }}"><i class="bx bx-right-arrow-alt"></i>Paid</a>
 						</li>
-					</ul>
+					</ul> --}}
 				</li>
 				<li>
-					<a href="javascript:;" class="has-arrow">
+					<a href="javascript:;">
 						<div class="parent-icon"><i class='bx bx-briefcase'></i>
 						</div>
 						<div class="menu-title">Placement</div>
@@ -123,7 +117,7 @@
 				</li> --}}
                 <hr>
                 <li>
-					<a href="#">
+					<a href="{{ route('logout') }}">
 						<div class="parent-icon"><i class='bx bx-power-off'></i>
 						</div>
 						<div class="menu-title">Logout</div>
@@ -146,7 +140,6 @@
 						</div>
 					</div>
 
-                    @include('include.no-user')
 
 					<div class="user-box dropdown">
 						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -209,28 +202,23 @@
 	<script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
 	<script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
 	<script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-	<script src="{{ asset('assets/plugins/highcharts/js/highcharts.js') }}"></script>
+	{{-- <script src="{{ asset('assets/plugins/highcharts/js/highcharts.js') }}"></script>
 	<script src="{{ asset('assets/plugins/highcharts/js/exporting.js') }}"></script>
 	<script src="{{ asset('assets/plugins/highcharts/js/variable-pie.js') }}"></script>
 	<script src="{{ asset('assets/plugins/highcharts/js/export-data.js') }}"></script>
 	<script src="{{ asset('assets/plugins/highcharts/js/accessibility.js') }}"></script>
 	<script src="{{ asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
-	<script src="{{ asset('assets/js/index.js') }}"></script>
+	{{-- <script src="{{ asset('assets/js/index.js') }}"></script> --}} 
 	<!--app JS-->
 	<script src="{{ asset('assets/js/app.js') }}"></script>
 
     @yield('js')
-	<script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-	<script>
-CKEDITOR.replace( 'summary-ckeditor', {
-    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-    filebrowserUploadMethod: 'form'
-});	</script>
-	<script>
+	
+	{{-- <script>
 		new PerfectScrollbar('.customers-list');
 		new PerfectScrollbar('.store-metrics');
 		new PerfectScrollbar('.product-list');
-	</script>
+	</script> --}}
 </body>
 
 </html>
