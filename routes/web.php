@@ -9,7 +9,7 @@ use App\Http\Controllers\StudentController;
 use App\Models\Payments;
 use App\Models\Paytm;
 use App\Models\User;
-// use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\Route;
 use App\Models\Placement;
 use App\Models\Course;
@@ -19,7 +19,6 @@ use App\Models\Course;
 
 Route::view('/contact-us', 'public.contact')->name('contact');
 Route::view('/pay-dues', 'public.pay_dues')->name('dues');
-Route::view('/', 'public.v2.index')->name('homepage');
 Route::view('/apply', 'public.v2.apply')->name('apply')->middleware('guest');
 Route::view('/payment','public.v2.online-payment')->name('payment');
 
@@ -33,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'home')->name('homepage');
     Route::get('/response', 'response')->name('response');
     Route::get('/view-course/{course}', 'viewCourse')->name('viewCourse');
 });

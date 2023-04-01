@@ -9,7 +9,7 @@
     <title>{{config('app.name')}}</title>
 
     <!-- Fonts -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
     <!--<link rel="stylesheet" href="{{ asset('css/app.css') }}">-->
 	<link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
