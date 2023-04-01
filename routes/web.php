@@ -19,13 +19,7 @@ use App\Models\Course;
 
 Route::view('/contact-us', 'public.contact')->name('contact');
 Route::view('/pay-dues', 'public.pay_dues')->name('dues');
-Route::view('/apply', 'public.v2.apply')->name('apply')->middleware('guest');
 Route::view('/payment','public.v2.online-payment')->name('payment');
-
-Route::get('/courses', function () {
-    $data['courses'] = Course::where('status',true)->get();
-    return view('public.v2.course',$data);
-})->name('courses');
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/apply',[AdminController::class,'addStudent'])->name('apply.addmission');
@@ -33,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'home')->name('homepage');
+    Route::get('/courses', 'courses')->name('courses');
+    Route::get('/apply', 'apply')->name('apply');
     Route::get('/response', 'response')->name('response');
     Route::get('/view-course/{course}', 'viewCourse')->name('viewCourse');
 });
@@ -117,7 +113,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/placements','placements')->name('placements');
         Route::delete('/placements/{id}','destroy')->name('admin.placements.delete');
     });
-
+ 
 //  admin routes
     Route::controller(AdminController::class)->group(function () {
         Route::get('/','index')->name('admin.dashboard');

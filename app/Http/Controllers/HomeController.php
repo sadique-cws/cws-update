@@ -16,7 +16,7 @@ class HomeController extends Controller
     }
     public function courses(){
         $data['courses'] = Course::where('status',true)->get();
-        return view('public/courses',$data);
+        return view('public/course',$data);
     }
     public function ViewCourse(Course $course){
         $data['course'] = $course;
@@ -24,7 +24,7 @@ class HomeController extends Controller
     }
 
     public function apply(){
-        return view('public/addmission');
+        return view('public/apply');
     }
 
     public function placements(){

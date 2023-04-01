@@ -15,6 +15,8 @@ $(function () {
 	$(".mobile-toggle-menu").on("click", function () {
 		$(".wrapper").addClass("toggled");
 	});
+
+	$(".wrapper").addClass("toggled");
 	// toggle menu button
 	$(".toggle-icon").click(function () {
 		if ($(".wrapper").hasClass("toggled")) {
