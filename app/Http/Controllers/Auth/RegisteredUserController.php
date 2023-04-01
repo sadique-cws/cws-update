@@ -37,11 +37,14 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'mother_name' => 'required|string|max:255',
             'father_name' => 'required|string|max:255',
-            'contact' => 'required|string|max:255',
+            'contact' => 'required|string|max:255|unique:users',
             'dob' => 'required|string|max:255',
             'gender' => 'required|string|max:255',
+            'education' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+
         ]);
 
         $user = User::create([
@@ -62,6 +65,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         // return redirect(RouteServiceProvider::HOME);
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('student.profile');
     }
 }

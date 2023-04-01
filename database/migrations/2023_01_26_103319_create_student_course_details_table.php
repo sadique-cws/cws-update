@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id")->constrained('users');
             $table->foreignId("course_id")->constrained('courses');
-            $table->enum("type",["0","1"]);//0 = monthly 1 = coursewise
+            $table->enum("type",["0","1","2"]);//0 = monthly 1 = coursewise
             $table->boolean("status")->default(true);
+            $table->string("monthly_fee")->default("700");
             $table->timestamps();
         });
     }

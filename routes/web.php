@@ -20,7 +20,7 @@ use App\Models\Course;
 Route::view('/contact-us', 'public.contact')->name('contact');
 Route::view('/pay-dues', 'public.pay_dues')->name('dues');
 Route::view('/', 'public.v2.index')->name('homepage');
-Route::view('/apply', 'public.v2.apply')->name('apply');
+Route::view('/apply', 'public.v2.apply')->name('apply')->middleware('guest');
 Route::view('/payment','public.v2.online-payment')->name('payment');
 
 Route::get('/courses', function () {
@@ -95,6 +95,7 @@ Route::prefix('account')->middleware('auth')->group(function(){
     Route::controller(StudentController::class)->group(function () {
        Route::get("profile", "profile")->name('student.profile');
        Route::get("/payments", "myPayments")->name('student.payments');
+       Route::get("/courses", "myCourses")->name('student.courses');
     });
 });
 

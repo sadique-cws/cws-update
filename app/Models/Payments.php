@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Payments extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
     public function student(){
         return $this->hasOne(User::class,'id','student_id');
     }

@@ -2,82 +2,113 @@
 
 use App\Mail\DuePayments;
 use App\Models\Payments;
+use App\Models\StudentCourseDetails;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 if(!function_exists('generate_payment')){
-    function generate_payment(){
-        $user = User::where([['user_type','student'],['status',true]])->get();
-        $now = new DateTime();
-
-        foreach($user as $u){
-
-            $dateOfJoin = new DateTime($u->created_at);
-            $start_year = $dateOfJoin->format('Y');
-            $end_year = $now->format('Y');
-            for($year=$start_year; $year<=$end_year;$year++){
-                if($start_year==$end_year){
-                    $start_month = $dateOfJoin->format('m');
-                    $end_month = $now->format('m');
-                }
-                elseif($year==$start_year){
-                    $start_month = $dateOfJoin->format('m');
-                    $end_month = 12;
-                }
-                elseif($year==$end_year){
-                    $start_month = 01;
-                    if($now->format('d')>$dateOfJoin->format('d')){
-                        $end_month = $now->format('m');
-                    }
-                    else{
-                        $end_month = $now->format('m')-1;
-                    }
-                }
-                else{
-                    $start_month = 01;
-                    $end_month = 12;
-                }
-
-                for($month=$start_month;$month<=$end_month;$month++){
-                    $result = new DateTime($year.'-'.$month.'-'.$dateOfJoin->format('d'));
-                    $new_date = $result->format("Y-m-d");
-                    $student_id = $u->id;
-
-                    $payment = Payments::where([['student_id',$student_id],['dues_month',$new_date]])->get();
-
-                    if($payment->count() == 0){
-
-                        $new_payment = new Payments();
-                        $new_payment->student_id = $student_id;
-                        $new_payment->amount = 700;
-                        $new_payment->dues_month = $new_date;
-                        $new_payment->save();
-
-                        // send sms
-                        $due_month = $result->format('M');
-                        $phone = $u->contact;
-
-                        $data = [
-                            'name' => $u->name,
-                            // 'email' => $email,
-                            'due_month' => $due_month,
-                            'due_amount' => 700,
-                        ];
-
-
-                        send($phone,'Your ₹ 700 amount is Dues for '.$due_month.' month, please pay your Dues ASAP');
-                    }
-
-
-                }
-
-            }
-
-        }
-    }
+    // $user = User::where([['user_type','student'],['status',true]])->get();
+    // dd($user);
+   
 }
 
-if(!function_exists('send')){
+// if(!function_exists('generate_payment')){
+    
+    // function generate_payment(){
+        // $users = User::where([['user_type','student'],['status',true]])->get();
+        // $now = new DateTime();
+
+        
+
+        // foreach($users as $user){
+        //     $condition = [['status',true],['type',"0"],['user_id',$user->id]];
+        //     $data  = StudentCourseDetails::with("user")->where($condition)->exists();
+
+            // if($data){
+            //     dd($data);
+            // }
+            // else{
+            //     dd($data);
+            // }
+    //     }
+        
+
+
+
+    // }
+// }
+    
+    //     $user = User::where([['user_type','student'],['status',true]])->get();
+    //     $now = new DateTime();
+
+    //     foreach($user as $u){
+
+    //         $dateOfJoin = new DateTime($u->created_at);
+    //         $start_year = $dateOfJoin->format('Y');
+    //         $end_year = $now->format('Y');
+    //         for($year=$start_year; $year<=$end_year;$year++){
+    //             if($start_year==$end_year){
+    //                 $start_month = $dateOfJoin->format('m');
+    //                 $end_month = $now->format('m');
+    //             }
+    //             elseif($year==$start_year){
+    //                 $start_month = $dateOfJoin->format('m');
+    //                 $end_month = 12;
+    //             }
+    //             elseif($year==$end_year){
+    //                 $start_month = 01;
+    //                 if($now->format('d')>$dateOfJoin->format('d')){
+    //                     $end_month = $now->format('m');
+    //                 }
+    //                 else{
+    //                     $end_month = $now->format('m')-1;
+    //                 }
+    //             }
+    //             else{
+    //                 $start_month = 01;
+    //                 $end_month = 12;
+    //             }
+
+    //             for($month=$start_month;$month<=$end_month;$month++){
+    //                 $result = new DateTime($year.'-'.$month.'-'.$dateOfJoin->format('d'));
+    //                 $new_date = $result->format("Y-m-d");
+    //                 $student_id = $u->id;
+
+    //                 $payment = Payments::where([['student_id',$student_id],['dues_month',$new_date]])->get();
+
+    //                 if($payment->count() == 0){
+
+    //                     $new_payment = new Payments();
+    //                     $new_payment->student_id = $student_id;
+    //                     $new_payment->amount = 700;
+    //                     $new_payment->dues_month = $new_date;
+    //                     $new_payment->save();
+
+    //                     // send sms
+    //                     $due_month = $result->format('M');
+    //                     $phone = $u->contact;
+
+    //                     $data = [
+    //                         'name' => $u->name,
+    //                         // 'email' => $email,
+    //                         'due_month' => $due_month,
+    //                         'due_amount' => 700,
+    //                     ];
+
+
+    //                     send($phone,'Your ₹ 700 amount is Dues for '.$due_month.' month, please pay your Dues ASAP');
+    //                 }
+
+
+    //             }
+
+    //         }
+
+    //     }
+    // }
+
+
+    if(!function_exists('send')){
     function send($to, $message){
         $sender_id = "CWSTXT";
         $auth_key = "255108AsWkIhuXpb5c3026c8";

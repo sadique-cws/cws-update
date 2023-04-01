@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Mail;
 class AdminController extends Controller
 {
     public function index(){
-        generate_payment();
+        // generate_payment();
         $data['total_paid'] = Payments::where('status',"paid")->WhereMonth("created_at",Carbon::now()->month)->get();
         return view('admin.index',$data);
     }
