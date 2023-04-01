@@ -12,9 +12,18 @@ class Course extends Model
     public function getPaidAmount()
     {
         $totalLoan = $this->discount_fee;
+        $interest = "0";
         $loan = $this->duration;
         $instalment = $totalLoan / $loan;
-        $priceLoan = $instalment + $totalLoan / 100;
-        return $priceLoan;
+        $priceLoan = $instalment + $totalLoan * $interest / 100;
+        return round($priceLoan);
+    }
+
+    public function getFullPaidAmount(){
+        $discount = 0.1;
+        $fee_amount = $this->discount_fee;
+        $discount_amount = $fee_amount * $discount;
+        return ($fee_amount - $discount_amount);
+
     }
 }

@@ -4,7 +4,7 @@
         <div class="w-1/4 shadow border p-4 mx-auto py-5">
             <div class="flex">
                 <h2 class="text-2xl font-semibold">Reset Password</h2>
-            </div>
+            </div> 
             <form method="POST" action="{{ route('password.update') }}">
                 @csrf
 

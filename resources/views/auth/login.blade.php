@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="flex justify-content py-24">
-        <div class="w-1/4 shadow border p-4 mx-auto py-5">
+        <div class="w-1/3 shadow border p-4 mx-auto py-5">
             <div class="flex">
                 <h2 class="text-2xl font-semibold">Student Login</h2>
             </div>
