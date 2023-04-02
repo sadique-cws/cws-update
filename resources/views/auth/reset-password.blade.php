@@ -1,4 +1,4 @@
-@extends('public.v2.base')
+@extends('public.base')
 @section('content')
     <div class="flex justify-content py-24">
         <div class="w-1/4 shadow border p-4 mx-auto py-5">

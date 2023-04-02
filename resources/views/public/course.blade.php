@@ -16,10 +16,11 @@
                             </div>
                         </div>
                         <div class="card-footer bg-white border-0">
-                            <a class="text-dark d-flex align-items-center gap-1 " href="{{route('viewCourse', $course)}}">
+                            <span class="text-dark d-flex align-items-center gap-1  mt-2">
                                 <span class=" theme-font font-semibold">₹{{ $course->discount_fee }}</span> <del class="text-slate-500 theme-font font-normal ml-2">₹{{ $course->fee }}</del>
-                                <span class="badge bg-success p-2 rounded small">50% Off</span> 
-                            </a>
+                                <span class="badge text-bg-success p-2 rounded small">{{ $course->getPercentage() }}% Off</span> 
+                            </span>
+                            <a href="{{route('viewCourse', $course)}}" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>

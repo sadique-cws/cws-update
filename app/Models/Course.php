@@ -18,6 +18,12 @@ class Course extends Model
         $priceLoan = $instalment + $totalLoan * $interest / 100;
         return round($priceLoan);
     }
+    public function getPercentage()
+    {
+        $total = ($this->discount_fee * 100) / $this->fee;
+        $total = 100 - $total;
+        return round($total);
+    }
 
     public function getFullPaidAmount(){
         $discount = 0.1;

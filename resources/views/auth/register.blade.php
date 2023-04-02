@@ -1,4 +1,4 @@
-@extends("public.v2.base")
+@extends("public.base")
 
 
 @section("content") 
