@@ -20,7 +20,11 @@ class HomeController extends Controller
     }
     public function ViewCourse(Course $course){
         $data['course'] = $course;
-        return view('public/v2/viewCourse',$data);
+        return view('public/viewCourse',$data);
+    }
+    public function gallery(){
+        // $data['gallery'] = $
+        return view('public/gallery');
     }
 
     public function apply(){

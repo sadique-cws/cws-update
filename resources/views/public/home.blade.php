@@ -1,5 +1,8 @@
 @extends("public.base")
 
+@section('sidebar')
+    @include('public.sidebar')
+@endsection
 
 @section('content')
 @if(Route::current()->getName() == 'homepage')

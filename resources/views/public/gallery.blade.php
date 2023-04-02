@@ -1,4 +1,4 @@
-@extends('public.v2.base')
+@extends('public.base')
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/gallery.css') }}" />
 @endsection

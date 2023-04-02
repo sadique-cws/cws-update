@@ -29,6 +29,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'home')->name('homepage');
     Route::get('/courses', 'courses')->name('courses');
     Route::get('/apply', 'apply')->name('apply');
+    Route::get('/gallery', "gallery")->name('gallery');
     Route::get('/response', 'response')->name('response');
     Route::get('/view-course/{course}', 'viewCourse')->name('viewCourse');
 });
@@ -75,16 +76,6 @@ Route::controller(PaytmController::class)->group(function () {
 Route::controller(PlacementController::class)->group(function () {
     Route::get('/add-placements','add')->name('add.placement');
     Route::post('/add-placements','store')->name('store.placement');
-});
-
-
-
-Route::prefix('v2')->group(function () {
-
-    Route::get('/gallery', function () {
-        return view('public.v2.gallery');
-    })->name('gallery');
-
 });
 
 Route::prefix('account')->middleware('auth')->group(function(){
